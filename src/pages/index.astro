@@ -15,7 +15,7 @@ import Section from "../components/Section.astro";
       className="Hero min-h-screen flex items-center justify-center text-center"
     >
       <div class="c flex flex-col items-center">
-        <h2 class="text-[6vw] leading-[1.2em]">
+        <h2 class="leading-[1.2em] lg:text-[6vw]">
           <b>Grow</b> Your <br /> Sales Pipeline <br />with Lasso.
         </h2>
         <h1><b>The AI-Powered</b> Contact Discovery Solution.</h1>
@@ -27,7 +27,7 @@ import Section from "../components/Section.astro";
     </Section>
     <Section className="flex flex-col">
       <div class="flex justify-end">
-        <div class="c my-8 max-w-[30vw]">
+        <div class="c my-8 lg:max-w-[30vw]">
           <h2>Unlock the untapped.</h2>
           <h3>
             It’s not a matter of ‘if’ there are contacts out there that you’re
@@ -43,7 +43,7 @@ import Section from "../components/Section.astro";
         </div>
       </div>
       <div>
-        <div class="c my-8 max-w-[30vw]">
+        <div class="c my-8 lg:max-w-[30vw]">
           <h2>100% additive.</h2>
           <h3>Found Contacts. <b>Found money.</b></h3>
           <p>
@@ -65,27 +65,27 @@ import Section from "../components/Section.astro";
   <div class="wrap">
     <Section className="min-h-screen flex  items-center">
       <div class="c max-w-[40vw]">
-        <h2 class="text-[6vw]">
+        <h2 class="text-[15vw] lg:text-[6vw]">
           Find your <b> missing</b> contacts.
         </h2>
       </div>
     </Section>
-    <Section className="h-[200vh] relative">
-      <div class="flex justify-end sticky top-[50vh]">
+    <Section className="lg:h-[200vh] relative">
+      <div class="top-[50vh] flex justify-end lg:sticky">
         <div class="c">
-          <p class="text-white text-[20vw]">
+          <p class="text-[30vw] text-white lg:text-[20vw]">
             <span class="font-grid">88</span>
-            <span class="text-yellow text-[.3em]">%</span>
+            <span class="text-[.3em] text-yellow">%</span>
           </p>
         </div>
       </div>
-      <div class="c max-w-[30vw] sticky top-[50vh]">
+      <div class="c top-[50vh] lg:sticky lg:max-w-[30vw]">
         <h2>Gap Analysis</h2>
         <p>
           A leading NYC based <b> advertising company</b> used Lasso to perform a
           gap analysis on their top 1,000 target accounts selling on Shopify.
         </p>
-        <p class="pl-4 my-5">
+        <p class="my-5 pl-4">
           CMO Chief Growth Officer VP of Marketing Director + Marketing titles
           with “growth” as a keyword
         </p>
@@ -101,9 +101,9 @@ import Section from "../components/Section.astro";
   <div class="wrap">
     <Section>
       <div
-        class="c text-center h-screen flex flex-col justify-center items-center"
+        class="c flex h-screen flex-col items-center justify-center text-center"
       >
-        <h2 class="text-[6vw] max-w-[50vw]">
+        <h2 class="text-[15vw] lg:max-w-[50vw] lg:text-[6vw]">
           Continuously find <b> net new</b>.
         </h2>
         <p class="max-w-[40ch]">
@@ -115,10 +115,12 @@ import Section from "../components/Section.astro";
       </div>
     </Section>
     <Section>
-      <div class="c flex items-end">
-        <h2 class="text-[6vw] max-w-[50%]">100% shots you didn’t take.</h2>
+      <div class="c items-end lg:flex lg:px-6">
+        <h2 class="py-0 text-[15vw] lg:max-w-[45%] lg:text-[6vw]">
+          100% shots you didn’t take.
+        </h2>
 
-        <div class="">
+        <div class="lg:px-6">
           <h3>Built by sales people, <b>for sales people.</b></h3>
           <p class="max-w-[30vw]">
             We’re <b> programmatically solving</b> some of our biggest challenges
