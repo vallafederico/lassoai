@@ -4,7 +4,16 @@
 
 - [ ]
 
+##### Overflow
+
+- [ ] Icons should REEEEEEALLLY be animated (nev buttons, buttons, scroll indicator)
+
 #### Missing
 
-- [ ] links for buttons?
-- [ ] hover states for buttons and links
+- [ ] hover states for buttons
+- [ ] mobile fixes
+
+##### Gl
+
+- [ ] test spiral shape
+- [ ] set up + find a cool way for handling 3 scenes

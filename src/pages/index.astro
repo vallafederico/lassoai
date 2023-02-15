@@ -3,10 +3,11 @@ import Layout from "../layouts/PageLayout.astro";
 import Section from "../components/Section.astro";
 
 import Navbar from "src/components/Navbar.astro";
+import Footer from "src/components/Footer.astro";
 
+import Square from "src/components/Square.astro";
 import Logo from "../components/Logo.astro";
 import Button from "src/components/Button.astro";
-import Form from "src/components/Form.astro";
 ---
 
 <Layout title="Home">
@@ -89,10 +90,15 @@ import Form from "src/components/Form.astro";
           A leading NYC based <b> advertising company</b> used Lasso to perform a
           gap analysis on their top 1,000 target accounts selling on Shopify.
         </p>
-        <p class="my-5 pl-4">
-          CMO Chief Growth Officer VP of Marketing Director + Marketing titles
-          with “growth” as a keyword
-        </p>
+        <div class="my-5 flex max-w-[40ch] items-center">
+          <div class="flex aspect-square h-[5vh] items-center justify-center">
+            <Square color="yellow" />
+          </div>
+          <p class="ml-6">
+            CMO — Chief Growth Officer —  VP of Marketing Director — Marketing
+            titles with “growth” as a keyword
+          </p>
+        </div>
         <h3>
           They were <b> missing 87%</b> of their <b> exact match ICP</b> (ideal customer
           profile) titles.
@@ -126,7 +132,7 @@ import Form from "src/components/Form.astro";
 
         <div class="lg:px-6">
           <h3>Built by sales people, <b>for sales people.</b></h3>
-          <p class="max-w-[30vw]">
+          <p class="max-w-[40ch]">
             We’re <b> programmatically solving</b> some of our biggest challenges
             with artificial intelligence.
           </p>
@@ -141,22 +147,5 @@ import Form from "src/components/Form.astro";
   <Section />
 
   <!-- Footer -->
-  <footer class="c footer flex items-end justify-between py-4">
-    <div class="flex w-[25vw] items-end">
-      <div class="flex h-[10vh] items-end pr-10">
-        <Logo />
-      </div>
-      <ul>
-        <li>Terms and Condition</li>
-        <li>Privacy Policy</li>
-        <li>Cookie Policy</li>
-        <li>Site by off brand.</li>
-      </ul>
-    </div>
-    <div>2022 DEMAND GEN, INC. ALL RIGHTS RESERVED</div>
-    <div class="w-[25vw]">
-      <Form />
-    </div>
-  </footer>
-  <div class="py-5"></div>
+  <Footer />
 </Layout>

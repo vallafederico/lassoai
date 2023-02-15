@@ -1,0 +1,52 @@
+---
+import Logo from "./Logo.astro";
+import Form from "./Form.astro";
+
+const LINKS = [
+  {
+    name: "Terms and Condition",
+    href: "/",
+  },
+  {
+    name: "Privacy Policy",
+    href: "/",
+  },
+  {
+    name: "Cookie Policy",
+    href: "/",
+  },
+];
+---
+
+<footer class="c footer flex items-end justify-between py-4">
+  <div class="flex w-[25vw] items-end">
+    <div class="flex h-[10vh] items-end pr-10">
+      <Logo />
+    </div>
+    <ul>
+      {
+        LINKS.map((link) => {
+          return (
+            <li>
+              <a target="_blank" class="hover:text-lgr" href={link.href}>
+                <div class="py-[.2em]">{link.name}</div>
+              </a>
+            </li>
+          );
+        })
+      }
+
+      <li>
+        <a target="_blank" class="hover:text-lgr" href="">
+          <div class="pt-[.8em] underline">Site by off brand.</div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="text-[8px]">2022 DEMAND GEN, INC. ® ALL RIGHTS RESERVED</div>
+  <div class="w-[25vw]">
+    <Form />
+  </div>
+</footer>
+
+<div class="py-5"></div>

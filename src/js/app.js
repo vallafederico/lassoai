@@ -1,4 +1,4 @@
-import "./style/main.css";
+import { printSignature } from "./modules/signature";
 
 import Dom from "./modules/dom";
 import Viewport from "./modules/viewport";
@@ -50,3 +50,4 @@ class App {
 }
 
 window.app = new App();
+// printSignature();
