@@ -1,6 +1,7 @@
-// import { Vector2 } from "three";
+import { Vector2 } from "three";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 
 import { Shader } from "./mat/post/base";
 
@@ -18,16 +19,16 @@ export class Post extends EffectComposer {
 
   createPasses() {
     this.addPass(new Shader());
+
+    this.bloomPass = new UnrealBloomPass(
+      new Vector2(window.innerWidth, window.innerHeight),
+      2.5, // strength
+      0, // radius
+      0.35 //  threshold
+    );
+
+    this.addPass(this.bloomPass);
   }
 
   renderPasses(t) {}
 }
-
-/*
-if (this.post?.isOn) {
-    this.post.renderPasses(this.time);
-    this.post.render();
-  } else {
-    this.renderer.render(this.scene, this.camera);
-  }
-*/

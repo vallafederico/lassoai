@@ -1,10 +1,12 @@
-import { WebGLRenderer } from "three";
+import { WebGLRenderer, sRGBEncoding } from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 // import Loader from "./util/loader.js";
 import Viewport from "./viewport.js";
 import Scene from "./scene.js";
 import Camera from "./camera.js";
+
+import { Post } from "./post.js";
 
 export default class Gl {
   constructor(sel) {
@@ -14,6 +16,7 @@ export default class Gl {
     this.renderer.setPixelRatio(this.vp.pixelRatio);
     this.renderer.setSize(this.vp.w, this.vp.h);
     this.renderer.setClearColor(0x121218, 1);
+    // this.renderer.outputEncoding = sRGBEncoding;
     this.vp.container.appendChild(this.renderer.domElement);
 
     this.camera = this.vp.camera = new Camera();
@@ -33,6 +36,12 @@ export default class Gl {
 
     this.create();
     this.initEvents();
+
+    this.post = new Post({
+      renderer: this.renderer,
+      scene: this.scene,
+      camera: this.camera,
+    });
     this.render();
   }
 
@@ -54,7 +63,14 @@ export default class Gl {
     if (this.scene && this.scene.render) this.scene.render(this.time);
 
     requestAnimationFrame(this.render.bind(this));
-    this.renderer.render(this.scene, this.camera);
+
+    if (this.post?.isOn) {
+      this.post.renderPasses(this.time);
+      this.post.render();
+    } else {
+      this.renderer.render(this.scene, this.camera);
+    }
+    // this.renderer.render(this.scene, this.camera);
   }
 
   resize() {

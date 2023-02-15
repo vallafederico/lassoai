@@ -1,0 +1,15 @@
+---
+const { href } = Astro.props;
+
+import Logo from "./Logo.astro";
+---
+
+<a
+  href={href}
+  class="flex items-center rounded-md rounded-br-xl bg-yellow px-6 py-3 text-black"
+>
+  <slot />
+  <div class="flex h-[2em] items-center pl-3">
+    <Logo color="#000" />
+  </div>
+</a>

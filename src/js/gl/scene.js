@@ -1,6 +1,8 @@
 import { Scene } from "three";
 import Quad from "./quad.js";
 
+import { Particles } from "./particles.js";
+
 export default class extends Scene {
   constructor(data = {}) {
     super();
@@ -10,8 +12,10 @@ export default class extends Scene {
   }
 
   create() {
-    this.quad = new Quad();
-    this.add(this.quad);
+    // this.quad = new Quad();
+
+    this.particles = new Particles();
+    this.add(this.particles);
   }
 
   render(t) {

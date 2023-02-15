@@ -115,11 +115,14 @@ main {
   min-height: 20vh;
 }
 
-.nav,
 .footer {
-  height: 5vh;
   margin-left: var(--space-l);
   margin-right: var(--space-l);
+}
+
+nav {
+  padding-left: var(--space-l);
+  padding-right: var(--space-l);
 }
 
 h1,
@@ -127,7 +130,7 @@ h2,
 h3,
 h4,
 h5 {
-  line-height: 1.2em;
+  line-height: 1.1em;
   padding: 0.6em 0;
 }
 

@@ -1,0 +1,33 @@
+---
+import Arrow from "./Arrow.astro";
+---
+
+<form action="" class="flex flex-col items-end">
+  <div class="flex justify-between border-b py-4">
+    <!-- <label for="femail">Email</label><br /> -->
+    <input
+      class="min-w-[15vw]"
+      type="email"
+      id="femail"
+      name="femail"
+      placeholder="Enter Email for Invite"
+    /><br />
+    <button
+      type="submit"
+      class="flex aspect-square h-12 items-center justify-center rounded-md rounded-br-xl bg-yellow p-2 text-black"
+    >
+      <Arrow color="#000" />
+    </button>
+  </div>
+  <p class="py-2">We're an invite only community</p>
+</form>
+
+<style>
+  input {
+    all: unset;
+  }
+
+  input::placeholder {
+    color: #fff;
+  }
+</style>

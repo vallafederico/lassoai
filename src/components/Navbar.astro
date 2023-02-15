@@ -1,0 +1,40 @@
+---
+import Logo from "./Logo.astro";
+import Button from "./Button.astro";
+import Arrow from "./Arrow.astro";
+
+const LINKS = [
+  { href: "#", label: "What Lasso does" },
+  { href: "#", label: "Statistics" },
+];
+---
+
+<nav class="fixed z-10 flex h-[8vh] w-full justify-between">
+  <div class="flex items-center">
+    <Logo />
+    <ul class="flex px-8">
+      {
+        LINKS.map((link) => {
+          return (
+            <li class="pr-8">
+              <a
+                class=" text-lgr flex items-center justify-center hover:text-white "
+                href={link.href}
+              >
+                <div class=" pr-4">{link.label}</div>
+
+                <div class="aspect-square h-[2em] ">
+                  <Arrow color="#fff" />
+                </div>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+
+  <div class="flex items-center">
+    <Button>Get Started</Button>
+  </div>
+</nav>

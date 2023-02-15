@@ -1,13 +1,17 @@
 ---
 import Layout from "../layouts/PageLayout.astro";
 import Section from "../components/Section.astro";
+
+import Navbar from "src/components/Navbar.astro";
+
+import Logo from "../components/Logo.astro";
+import Button from "src/components/Button.astro";
+import Form from "src/components/Form.astro";
 ---
 
 <Layout title="Home">
   <!-- Nav -->
-  <nav class="fixed">
-    <div class="nav">Nav</div>
-  </nav>
+  <Navbar />
 
   <!-- Hero -->
   <div class="wrap">
@@ -126,6 +130,9 @@ import Section from "../components/Section.astro";
             We’re <b> programmatically solving</b> some of our biggest challenges
             with artificial intelligence.
           </p>
+          <div class="my-8">
+            <Button>Join The Waitlist</Button>
+          </div>
         </div>
       </div>
     </Section>
@@ -135,8 +142,10 @@ import Section from "../components/Section.astro";
 
   <!-- Footer -->
   <footer class="c footer flex items-end justify-between py-4">
-    <div class="flex w-[25vw]">
-      <div class="p-2">logo</div>
+    <div class="flex w-[25vw] items-end">
+      <div class="flex h-[10vh] items-end pr-10">
+        <Logo />
+      </div>
       <ul>
         <li>Terms and Condition</li>
         <li>Privacy Policy</li>
@@ -145,6 +154,9 @@ import Section from "../components/Section.astro";
       </ul>
     </div>
     <div>2022 DEMAND GEN, INC. ALL RIGHTS RESERVED</div>
-    <div class="w-[25vw] border">Form</div>
+    <div class="w-[25vw]">
+      <Form />
+    </div>
   </footer>
+  <div class="py-5"></div>
 </Layout>
