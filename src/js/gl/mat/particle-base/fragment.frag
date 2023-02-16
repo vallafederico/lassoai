@@ -15,11 +15,19 @@ uniform vec3 u_col2;
 uniform vec3 u_col3;
 
 
+// GUI
+uniform float u_part_low;
+uniform float u_part_high;
+
+
 void main() {
 
-  // alpha mask
-  // float circle = 1. - smoothstep(-.2, .3, length(gl_PointCoord - vec2(.5)));
-  float circle = smoothstep(0., 1., sin(gl_PointCoord.y * 3.141592)) * .5;
+  // alpha mask + size
+  float circle = 1. - smoothstep(
+    u_part_low,
+    u_part_high, 
+    (distance(gl_PointCoord.xy, vec2(.5)))
+  ) * .5;
 
 
   // color computing
@@ -33,8 +41,11 @@ void main() {
    final_color = u_col2;
   }
 
+
+  
+
   gl_FragColor.rgb = final_color;
-  gl_FragColor.a = circle;
+  gl_FragColor.a = circle - .8;
 
   // gl_FragColor = vec4(1., 0., 0., 1.);
 }

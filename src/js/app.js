@@ -7,6 +7,8 @@ import Scroll from "./modules/scroll";
 
 import Gl from "./gl/gl.js";
 
+import { UI } from "./modules/gui";
+
 class App {
   constructor() {
     this.body = document.querySelector("body");
@@ -14,6 +16,7 @@ class App {
 
     this.time = 0;
 
+    window.UI = new UI();
     this.init();
   }
 

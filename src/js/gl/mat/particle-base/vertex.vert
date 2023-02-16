@@ -17,6 +17,8 @@ attribute float a_random_color;
 varying float v_random;
 varying float v_random_color;
 
+#include ../noise.glsl
+
 // attribute vec3 a_color;
 // varying vec3 v_color;
 
@@ -28,7 +30,13 @@ void main() {
   // pos += a_position;
 
 
-  vec4 m_pos = modelViewMatrix * vec4(position, 1.0);
+  // pos += vec3(
+  //   cnoise(vec4(atan(pos.x * 20.), cos(pos.y * 20.), sin(pos.z * 30.),  u_time * .2))
+  // ) ;
+
+  // pos.xy += vec2(cnoise(vec4(sin(pos.z * 200.) + u_time * .2)));
+
+  vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
   gl_PointSize = ((10. * a_random) + .02) * (1. / -m_pos.z);
   gl_Position = projectionMatrix * m_pos;
 

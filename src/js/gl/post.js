@@ -30,5 +30,13 @@ export class Post extends EffectComposer {
     this.addPass(this.bloomPass);
   }
 
-  renderPasses(t) {}
+  renderPasses(t) {
+    this.renderGui();
+  }
+
+  renderGui() {
+    this.bloomPass.strength = window.UI.params.bloomStrength;
+    this.bloomPass.radius = window.UI.params.bloomRadius;
+    this.bloomPass.threshold = window.UI.params.bloomTresh;
+  }
 }

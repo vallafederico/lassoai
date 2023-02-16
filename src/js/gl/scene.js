@@ -19,7 +19,7 @@ export default class extends Scene {
   }
 
   render(t) {
-    if (this.quad) this.quad.render(t);
+    if (this.particles) this.particles.render(t);
   }
 
   resize() {}
