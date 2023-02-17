@@ -1,4 +1,4 @@
-import { Scene } from "three";
+import { Scene, Group } from "three";
 import Quad from "./quad.js";
 
 import { Particles } from "./particles.js";
@@ -14,8 +14,11 @@ export default class extends Scene {
   create() {
     // this.quad = new Quad();
 
+    this.ctrl = new Group();
+
     this.particles = new Particles();
-    this.add(this.particles);
+    this.ctrl.add(this.particles);
+    this.add(this.ctrl);
   }
 
   render(t) {

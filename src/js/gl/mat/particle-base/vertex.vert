@@ -28,20 +28,32 @@ varying float v_random_color;
 void main() {
   vec3 pos = position;
   // pos += a_position;
+  // pos.y += fract(u_time * .2);
 
-
-  // pos += vec3(
-  //   cnoise(vec4(atan(pos.x * 20.), cos(pos.y * 20.), sin(pos.z * 30.),  u_time * .2))
-  // ) ;
-
-  // pos.xy += vec2(cnoise(vec4(sin(pos.z * 200.) + u_time * .2)));
 
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
+
+  // float ns = cnoise(vec4(
+  //   m_pos.x * 4., 
+  //   m_pos.y * 5., 
+  //   m_pos.z * 3., 
+  //   u_time * .002
+  // )) * .2;
+
+  // m_pos.x += (ns) ;
+  // m_pos.y += (ns) ;
+  // m_pos.z += (ns) ;
+
+  // m_pos.y -= fract(m_pos.y * 10. + u_time * .2);
+  // m_pos.x += fract(m_pos.x * 10. + u_time * .2);
+
+
+
   gl_PointSize = ((10. * a_random) + .02) * (1. / -m_pos.z);
   gl_Position = projectionMatrix * m_pos;
 
-  v_uv = uv;
 
+  v_uv = uv;
   v_random = a_random;
   v_random_color = a_random_color;
   // v_color = a_color;

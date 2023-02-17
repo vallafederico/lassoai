@@ -2,7 +2,7 @@ import GUI from "lil-gui";
 
 export class UI extends GUI {
   constructor() {
-    super();
+    super({ closeFolders: true });
 
     // main
     let domVisibleToggle = true;

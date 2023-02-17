@@ -12,13 +12,14 @@ export class Post extends EffectComposer {
     this.renderer = renderer;
 
     this.renderPass = new RenderPass(scene, camera);
+    console.log(this.renderPass);
     this.addPass(this.renderPass);
 
     this.createPasses();
   }
 
   createPasses() {
-    this.addPass(new Shader());
+    // this.addPass(new Shader());
 
     this.bloomPass = new UnrealBloomPass(
       new Vector2(window.innerWidth, window.innerHeight),
