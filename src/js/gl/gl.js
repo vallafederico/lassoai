@@ -42,6 +42,7 @@ export default class Gl {
       scene: this.scene,
       camera: this.camera,
     });
+
     this.render();
   }
 
