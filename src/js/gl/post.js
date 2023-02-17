@@ -1,9 +1,10 @@
 import { Vector2 } from "three";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
-import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+// import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 
-import { Shader } from "./mat/post/base";
+// import { Shader } from "./mat/post/base";
+import { MergeShader } from "./mat/post/merge";
 
 export class Post extends EffectComposer {
   constructor({ renderer, scene, camera }) {
@@ -11,16 +12,13 @@ export class Post extends EffectComposer {
     this.isOn = true;
     this.renderer = renderer;
 
-    this.renderPass = new RenderPass(scene, camera);
-    console.log(this.renderPass);
-    this.addPass(this.renderPass);
+    this.mergePass = new MergeShader();
+    this.addPass(this.mergePass);
 
     this.createPasses();
   }
 
   createPasses() {
-    // this.addPass(new Shader());
-
     this.bloomPass = new UnrealBloomPass(
       new Vector2(window.innerWidth, window.innerHeight),
       2.5, // strength
@@ -29,6 +27,11 @@ export class Post extends EffectComposer {
     );
 
     this.addPass(this.bloomPass);
+  }
+
+  set textures({ hero, data }) {
+    this.mergePass.material.uniforms.diff_0.value = hero;
+    this.mergePass.material.uniforms.diff_1.value = data;
   }
 
   renderPasses(t) {

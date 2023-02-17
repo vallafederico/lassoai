@@ -9,7 +9,7 @@ export class Particles extends Points {
     const subd = 100;
 
     // this.geometry = new PlaneGeometry(2, 2, subd, subd);
-    this.geometry = new BoxGeometry(2, 2, 2, subd, subd, subd);
+    this.geometry = new BoxGeometry(1, 1, 1, subd, subd, subd);
     // console.log(window.assets);
     // this.geometry = window.assets.spiral;
     // this.scale.set(1.5, 1.5, 1.5);
@@ -39,7 +39,7 @@ export class Particles extends Points {
   render(t) {
     this.material.time = t;
     // console.log(t);
-    // this.rotation.y = -t * 0.03;
+    this.rotation.y = -t * 0.03;
     // this.rotation.z = t * 0.01;
     // this.rotation.x = t * 0.04;
   }

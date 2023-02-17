@@ -3,7 +3,8 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 import Loader from "./util/loader.js";
 import Viewport from "./viewport.js";
-import Scene from "./scene.js";
+import SceneHero from "./sceneHero.js";
+import SceneData from "./sceneData.js";
 import Camera from "./camera.js";
 
 import { Post } from "./post.js";
@@ -52,7 +53,8 @@ export default class Gl {
   }
 
   create() {
-    this.scene = new Scene();
+    this.scene = new SceneHero();
+    this.scene1 = new SceneData();
   }
 
   render() {
@@ -60,10 +62,9 @@ export default class Gl {
     this.time += 0.05;
 
     this.controls?.update();
-
-    if (this.scene && this.scene.render) this.scene.render(this.time);
-
     requestAnimationFrame(this.render.bind(this));
+
+    this.renderScenes();
 
     if (this.post?.isOn) {
       this.post.renderPasses(this.time);
@@ -71,7 +72,16 @@ export default class Gl {
     } else {
       this.renderer.render(this.scene, this.camera);
     }
-    // this.renderer.render(this.scene, this.camera);
+  }
+
+  renderScenes() {
+    if (this.scene && this.scene.isActive) this.scene.render(this.time);
+    if (this.scene1 && this.scene1.isActive) this.scene1.render(this.time);
+
+    this.post.textures = {
+      hero: this.scene.toTarget(this.renderer, this.camera),
+      data: this.scene1.toTarget(this.renderer, this.camera),
+    };
   }
 
   resize() {
