@@ -1,6 +1,7 @@
 import { Scene, Group, WebGLRenderTarget, NearestFilter } from "three";
 
 import { RandomParticles } from "./part-random.js";
+import { HeroParticles } from "./part-hero.js";
 
 export default class extends Scene {
   constructor() {
@@ -19,12 +20,19 @@ export default class extends Scene {
     this.randomParticles.scale.set(1.5, 1.5, 1.5);
     this.ctrl.add(this.randomParticles);
 
+    this.heroParticles = new HeroParticles();
+    this.heroParticles.scale.set(2.5, 2.5, 2.5);
+    this.heroParticles.rotation.z = 0.5;
+    this.ctrl.add(this.heroParticles);
+
     this.add(this.ctrl);
   }
 
   render(t) {
     if (!this.isActive) return;
+
     if (this.randomParticles) this.randomParticles.render(t);
+    if (this.heroParticles) this.heroParticles.render(t);
   }
 
   toTarget(renderer, camera) {
