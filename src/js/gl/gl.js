@@ -59,7 +59,7 @@ export default class Gl {
 
   render() {
     if (this.paused) return;
-    this.time += 0.05;
+    this.time += 0.0005;
 
     this.controls?.update();
     requestAnimationFrame(this.render.bind(this));

@@ -1,6 +1,6 @@
 import { Scene, Group, WebGLRenderTarget, NearestFilter } from "three";
 
-import { Particles } from "./particles.js";
+import { RandomParticles } from "./part-random.js";
 
 export default class extends Scene {
   constructor() {
@@ -13,16 +13,18 @@ export default class extends Scene {
 
   create() {
     this.ctrl = new Group();
-    this.particles = new Particles();
+    this.ctrl.position.z = 1;
 
-    this.ctrl.add(this.particles);
+    this.randomParticles = new RandomParticles();
+    this.randomParticles.scale.set(1.5, 1.5, 1.5);
+    this.ctrl.add(this.randomParticles);
+
     this.add(this.ctrl);
   }
 
   render(t) {
     if (!this.isActive) return;
-
-    if (this.particles) this.particles.render(t);
+    if (this.randomParticles) this.randomParticles.render(t);
   }
 
   toTarget(renderer, camera) {
@@ -39,7 +41,6 @@ export default class extends Scene {
   }
 
   createTarget() {
-    console.log(window.app.gl.vp.pixelRatio);
     this.rt = new WebGLRenderTarget(
       window.innerWidth * window.app.gl.vp.pixelRatio,
       window.innerHeight * window.app.gl.vp.pixelRatio

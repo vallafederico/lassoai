@@ -1,5 +1,4 @@
 import { Scene, Group, WebGLRenderTarget } from "three";
-import Quad from "./quad.js";
 
 import { Particles } from "./particles.js";
 
@@ -19,7 +18,7 @@ export default class extends Scene {
     this.ctrl.add(this.particles);
     this.add(this.ctrl);
 
-    this.ctrl.scale.set(0.2, 0.2, 0.2);
+    // this.ctrl.scale.set(0.2, 0.2, 0.2);
   }
 
   render(t) {
