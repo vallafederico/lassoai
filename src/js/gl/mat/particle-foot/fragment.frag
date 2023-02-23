@@ -10,7 +10,6 @@ varying vec3 v_pos;
 varying float v_random;
 varying float v_random_color;
 
-
 uniform vec3 u_col1;
 uniform vec3 u_col2;
 uniform vec3 u_col3;
@@ -19,6 +18,7 @@ uniform vec3 u_col3;
 // GUI
 uniform float u_part_low;
 uniform float u_part_high;
+
 
 
 void main() {
@@ -32,22 +32,29 @@ void main() {
 
 
   // color computing
-  vec3 final_color = u_col3; // white
+  vec3 final_color = (u_col2); // white
 
-  if ( v_random_color > .33 && v_random_color < .66) { // blue
+
+  if ( v_random_color > .5 && v_random_color < .56) { // blue
     final_color = u_col1;
   } 
 
   if (v_random_color > .99) { // yellow
-   final_color = u_col2;
+   final_color = u_col2 * .8;
   }
+
+  float fog = (1. -  distance(v_pos.y, 0.5)) + .1;
+
+
+  // mix based on Y
 
 
 
   
 
+  // gl_FragColor.rgb = vec3(fog);
   gl_FragColor.rgb = final_color;
-  gl_FragColor.a = circle - .8;
+  gl_FragColor.a = (circle - .8) * fog;
 
   // gl_FragColor = vec4(1., 0., 0., 1.);
 }

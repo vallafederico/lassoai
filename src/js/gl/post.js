@@ -29,9 +29,10 @@ export class Post extends EffectComposer {
     this.addPass(this.bloomPass);
   }
 
-  set textures({ hero, data }) {
+  set textures({ hero, data, foot }) {
     this.mergePass.material.uniforms.diff_0.value = hero;
     this.mergePass.material.uniforms.diff_1.value = data;
+    this.mergePass.material.uniforms.diff_2.value = foot;
   }
 
   renderPasses(t) {
