@@ -33,7 +33,7 @@ void main() {
     u_time
   )) * .2;
 
-  pos.y = fract(pos.y - v_random - u_time) - .5;
+  pos.y = fract(pos.y - v_random + u_time) - .5;
 
   // funnel shape
   pos.x *= .1 + (pos.y + .5) * (pos.y * .8);
@@ -49,7 +49,7 @@ void main() {
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
 
   gl_Position = projectionMatrix * m_pos;
-  gl_PointSize = (((8.) * a_random) + .02) * (1. / -m_pos.z);
+  gl_PointSize = (((5.) * a_random) + .02) * (1. / -m_pos.z);
 
 
   v_uv = uv;

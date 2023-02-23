@@ -5,6 +5,7 @@ import Loader from "./util/loader.js";
 import Viewport from "./viewport.js";
 import SceneHero from "./sceneHero.js";
 import SceneData from "./sceneData.js";
+import sceneFoot from "./sceneFoot.js";
 import Camera from "./camera.js";
 
 import { Post } from "./post.js";
@@ -55,6 +56,7 @@ export default class Gl {
   create() {
     this.scene = new SceneHero();
     this.scene1 = new SceneData();
+    this.scene2 = new sceneFoot();
   }
 
   render() {
@@ -77,10 +79,12 @@ export default class Gl {
   renderScenes() {
     if (this.scene && this.scene.isActive) this.scene.render(this.time);
     if (this.scene1 && this.scene1.isActive) this.scene1.render(this.time);
+    if (this.scene2 && this.scene2.isActive) this.scene2.render(this.time);
 
     this.post.textures = {
       hero: this.scene.toTarget(this.renderer, this.camera),
       data: this.scene1.toTarget(this.renderer, this.camera),
+      foot: this.scene2.toTarget(this.renderer, this.camera),
     };
   }
 

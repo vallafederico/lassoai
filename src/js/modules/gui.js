@@ -25,16 +25,22 @@ export class UI extends GUI {
     // scenes
     this.scenes = {
       scene1: () => {
-        window.app.gl.post.mergePass.material.uniforms.scene_switch.value = 0;
+        window.app.gl.post.mergePass.material.uniforms.switch1.value = 0;
+        window.app.gl.post.mergePass.material.uniforms.switch2.value = 0;
       },
       scene2: () => {
-        window.app.gl.post.mergePass.material.uniforms.scene_switch.value = 1;
+        window.app.gl.post.mergePass.material.uniforms.switch1.value = 1;
+        window.app.gl.post.mergePass.material.uniforms.switch2.value = 0;
+      },
+      scene3: () => {
+        window.app.gl.post.mergePass.material.uniforms.switch2.value = 1;
       },
     };
 
     this.scenesFolder = this.addFolder("Scenes");
     this.scenesFolder.add(this.scenes, "scene1");
     this.scenesFolder.add(this.scenes, "scene2");
+    this.scenesFolder.add(this.scenes, "scene3");
 
     // particles
     this.particles = {
@@ -67,7 +73,7 @@ export class UI extends GUI {
     this.scene2 = {};
     this.scene2 = this.animation.addFolder("Scene 2");
 
-    // this.scene3 = {};
-    // this.scene3 = this.animation.addFolder("Scene 3");
+    this.scene3 = {};
+    this.scene3 = this.animation.addFolder("Scene 3");
   }
 }
