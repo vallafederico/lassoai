@@ -25,7 +25,6 @@ export default class extends RawShaderMaterial {
     };
 
     this.side = DoubleSide;
-    // this.wireframe= true;
     this.transparent = true;
 
     this.depthTest = false;
