@@ -2,7 +2,7 @@ import GUI from "lil-gui";
 
 export class UI extends GUI {
   constructor() {
-    super({ closeFolders: true });
+    super(/*{ closeFolders: true }*/);
 
     // main
     let domVisibleToggle = true;
@@ -21,6 +21,20 @@ export class UI extends GUI {
     };
     this.postFolder = this.addFolder("Main");
     this.postFolder.add(this.ctrls, "domVisible", 0, 10, 0.001);
+
+    // scenes
+    this.scenes = {
+      scene1: () => {
+        window.app.gl.post.mergePass.material.uniforms.scene_switch.value = 0;
+      },
+      scene2: () => {
+        window.app.gl.post.mergePass.material.uniforms.scene_switch.value = 1;
+      },
+    };
+
+    this.scenesFolder = this.addFolder("Scenes");
+    this.scenesFolder.add(this.scenes, "scene1");
+    this.scenesFolder.add(this.scenes, "scene2");
 
     // particles
     this.particles = {
@@ -43,5 +57,17 @@ export class UI extends GUI {
     this.postFolder.add(this.params, "bloomStrength", 0, 10, 0.001);
     this.postFolder.add(this.params, "bloomRadius", 0, 2, 0.001);
     this.postFolder.add(this.params, "bloomTresh", 0, 1, 0.001);
+
+    // animation
+    this.animation = this.addFolder("Animation");
+
+    this.scene1 = {};
+    this.scene1 = this.animation.addFolder("Scene 1");
+
+    this.scene2 = {};
+    this.scene2 = this.animation.addFolder("Scene 2");
+
+    // this.scene3 = {};
+    // this.scene3 = this.animation.addFolder("Scene 3");
   }
 }
