@@ -32,7 +32,7 @@ void main() {
 
 
   // color computing
-  vec3 final_color = vec3(.02); // white
+  vec3 final_color = u_col3; // white
 
   if ( v_random_color > .33 && v_random_color < .66) { // blue
     final_color = u_col1;

@@ -26,18 +26,20 @@ const float SHAPE_CTRL = 2.;
 void main() {
   vec3 pos = position;
 
-    float ns = cnoise(vec4(
+  float ns = cnoise(vec4(
     pos.x * 4., 
     pos.y * 5., 
     pos.z * 3., 
     u_time
   )) * .2;
 
-  pos.y = fract(pos.y - v_random + u_time) - .5;
+  pos.y = fract(pos.y - v_random + u_time);
+
+  // pos.y += sin(u_time); // zoom in
 
   // funnel shape
-  pos.x *= .1 + (pos.y + .5) * (pos.y * .8);
-  pos.z *= .1 + (pos.y + .5) * (pos.y * .8);
+  pos.x *= 0. + (pos.y + .5) * (pos.y * .8);
+  pos.z *= 0. + (pos.y + .5) * (pos.y * .8);
 
   // pos.xz *= SHAPE_CTRL;
 

@@ -13,7 +13,8 @@ export default class extends Scene {
   create() {
     this.ctrl = new Group();
     // this.ctrl.scale.set(2, 2, 2);
-    this.ctrl.position.z = 1.5;
+    this.ctrl.position.z = 1.3;
+    // this.ctrl.position.
 
     this.particles = new FootParticles();
     this.particles.rotation.x = 1.5;

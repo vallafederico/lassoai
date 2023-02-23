@@ -19,7 +19,7 @@ uniform vec3 u_col3;
 uniform float u_part_low;
 uniform float u_part_high;
 
-const float COLOR_VERT_CTRL = .2;
+const float COLOR_VERT_CTRL = .4;
 
 
 void main() {
@@ -33,7 +33,7 @@ void main() {
 
 
   // color computing
-  vec3 final_color = vec3(.02); // white
+  vec3 final_color = u_col3; // white
 
 
   if ( v_random_color > .33 && v_random_color < .66) { // blue

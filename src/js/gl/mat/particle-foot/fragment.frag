@@ -32,16 +32,18 @@ void main() {
 
 
   // color computing
-  vec3 final_color = vec3(u_col2); // white
+  vec3 final_color = (u_col2); // white
 
 
-  if ( v_random_color > .43 && v_random_color < .56) { // blue
+  if ( v_random_color > .5 && v_random_color < .56) { // blue
     final_color = u_col1;
   } 
 
   if (v_random_color > .99) { // yellow
    final_color = u_col2 * .8;
   }
+
+  float fog = (1. -  distance(v_pos.y, 0.5)) + .1;
 
 
   // mix based on Y
@@ -50,9 +52,9 @@ void main() {
 
   
 
+  // gl_FragColor.rgb = vec3(fog);
   gl_FragColor.rgb = final_color;
-  // gl_FragColor.rgb = vec3(v_pos.y);
-  gl_FragColor.a = circle - .8;
+  gl_FragColor.a = (circle - .8) * fog;
 
   // gl_FragColor = vec4(1., 0., 0., 1.);
 }

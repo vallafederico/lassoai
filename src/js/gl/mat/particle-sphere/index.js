@@ -3,6 +3,9 @@ import { RawShaderMaterial, DoubleSide, AdditiveBlending } from "three";
 import vertexShader from "./vertex.vert";
 import fragmentShader from "./fragment.frag";
 
+import { params } from "../../params.js";
+const { part_col1, part_col2, part_col3 } = params.gl;
+
 export default class extends RawShaderMaterial {
   constructor(options) {
     super({
@@ -16,15 +19,12 @@ export default class extends RawShaderMaterial {
       u_part_low: { value: 0.1 },
       u_part_high: { value: 0.9 },
       // ** colors
-      u_col1: { value: [0, 0, 0.7] },
-      u_col2: { value: [0.9294117647058824, 1, 0] },
-      u_col3: {
-        value: [0.09411764705882353, 0.09803921568627451, 0.12941176470588237],
-      },
+      u_col1: { value: part_col1 },
+      u_col2: { value: part_col2 },
+      u_col3: { value: part_col3 },
     };
 
     this.side = DoubleSide;
-    // this.wireframe= true;
     this.transparent = true;
 
     this.depthTest = false;
