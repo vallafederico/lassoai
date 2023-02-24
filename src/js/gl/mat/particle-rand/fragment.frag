@@ -16,6 +16,8 @@ uniform vec3 u_col2;
 uniform vec3 u_col3;
 
 
+uniform float u_perc;
+
 // GUI
 uniform float u_part_low;
 uniform float u_part_high;
@@ -47,7 +49,7 @@ void main() {
   
 
   gl_FragColor.rgb = final_color;
-  gl_FragColor.a = circle - .8;
+  gl_FragColor.a = circle - .8 - u_perc * .2;
 
   // gl_FragColor = vec4(1., 0., 0., 1.);
 }

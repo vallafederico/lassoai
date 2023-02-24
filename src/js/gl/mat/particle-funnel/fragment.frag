@@ -19,6 +19,9 @@ uniform vec3 u_col3;
 uniform float u_part_low;
 uniform float u_part_high;
 
+// animation
+uniform float u_prog;
+
 const float COLOR_VERT_CTRL = .4;
 
 
@@ -44,7 +47,7 @@ void main() {
    final_color = u_col2 * .8;
   }
 
-  final_color = mix(final_color, u_col2, (v_pos.y * -1.) + COLOR_VERT_CTRL );
+  final_color = mix(final_color, u_col2, (v_pos.y * -1.) + u_prog );
   if ( v_random_color > .9) { // blue
     final_color = u_col1;
   } 

@@ -18,6 +18,8 @@ varying float v_random;
 varying float v_random_color;
 varying vec3 v_pos;
 
+uniform float u_perc;
+
 #include ../noise.glsl
 
 const float NOISE_CTRL = 0.8;
@@ -32,15 +34,13 @@ void main() {
     u_time
   )) * .2;
 
-  // pos.x = fract(pos.x + v_random + u_time) - .5;
   pos.y = fract(pos.y - v_random - u_time) - .5;
 
   pos.x *= .1 + (pos.y + .5) * pos.y;
   pos.z *= .1 + (pos.y + .5) * pos.y;
 
 
-
-  pos.xyz += vec3(ns, ns, ns) * NOISE_CTRL;
+  pos.xyz += vec3(ns, ns, ns) * (1. - u_perc); // NOISE_CTRL;
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
 
   gl_Position = projectionMatrix * m_pos;

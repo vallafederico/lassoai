@@ -2,11 +2,14 @@ import { Scene, Group, WebGLRenderTarget } from "three";
 import { FunnelParticles } from "./part-funnel.js";
 import { SphereParticles } from "./part-sphere.js";
 
+import { Transform } from "../modules/animation/transform-mid.js";
+
 export default class extends Scene {
   constructor() {
     super();
     this.isActive = true;
 
+    this.initEvents();
     this.createTarget();
     this.create();
   }
@@ -30,11 +33,14 @@ export default class extends Scene {
   render(t) {
     if (!this.isActive) return;
 
+    this.trans?.render();
+    // console.log(this.trans.perc);
+
     this.ctrl.rotation.y = window.app.gl.mouse.ex * 0.05;
     // this.ctrl.rotation.x = window.app.gl.mouse.ey * 0.05;
 
-    if (this.particles) this.particles.render(t);
-    if (this.sphere) this.sphere.render(t);
+    if (this.particles) this.particles.render(t, this.trans.perc);
+    if (this.sphere) this.sphere.render(t, this.trans.perc);
   }
 
   toTarget(renderer, camera) {
@@ -47,6 +53,7 @@ export default class extends Scene {
   }
 
   resize() {
+    this.trans?.resize();
     this.createTarget();
   }
 
@@ -55,5 +62,14 @@ export default class extends Scene {
       window.innerWidth * window.app.gl.vp.pixelRatio,
       window.innerHeight * window.app.gl.vp.pixelRatio
     );
+  }
+
+  // ANIMATION
+  initEvents() {
+    this.trans = new Transform({
+      element: document.querySelector('[data-dom="data"]'),
+    });
+    // console.log(this.trans);
+    // this.trans.el.style.border = "1px solid red";
   }
 }

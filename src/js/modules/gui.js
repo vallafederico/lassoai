@@ -2,7 +2,7 @@ import GUI from "lil-gui";
 
 export class UI extends GUI {
   constructor() {
-    super(/*{ closeFolders: true }*/);
+    super({ closeFolders: true });
 
     // main
     let domVisibleToggle = true;
@@ -45,7 +45,7 @@ export class UI extends GUI {
     // particles
     this.particles = {
       particleLow: 0.1,
-      particleHigh: 0.9,
+      particleHigh: 0.759,
     };
 
     this.particlesFolder = this.addFolder("Particles");

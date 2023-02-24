@@ -36,12 +36,9 @@ export class FunnelParticles extends Points {
     this.geometry.setAttribute("position", new BufferAttribute(position, 3));
   }
 
-  render(t) {
+  render(t, perc) {
     this.material.time = t;
-    // console.log(t);
-    // this.rotation.y = -t * 10;
-    // this.rotation.z = t * 0.01;
-    // this.rotation.x = t;
+    this.material.prog = perc;
   }
 
   resize() {}

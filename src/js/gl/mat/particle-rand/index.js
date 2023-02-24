@@ -22,6 +22,8 @@ export default class extends RawShaderMaterial {
       u_col1: { value: part_col1 },
       u_col2: { value: part_col2 },
       u_col3: { value: part_col3 },
+      // * animation
+      u_perc: { value: 0 },
     };
 
     this.side = DoubleSide;
@@ -37,6 +39,10 @@ export default class extends RawShaderMaterial {
     this.uniforms.u_time.value = t;
 
     this.renderGui();
+  }
+
+  set perc(p) {
+    this.uniforms.u_perc.value = p;
   }
 
   renderGui() {

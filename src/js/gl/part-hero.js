@@ -39,8 +39,9 @@ export class HeroParticles extends Points {
 
   render(t, perc) {
     this.material.time = t;
+    this.material.perc = perc;
     // console.log(t);
-    this.rotation.y = -perc;
+    this.rotation.y = -perc * 1.5;
     // this.rotation.z = perc;
     // this.rotation.x = t;
   }

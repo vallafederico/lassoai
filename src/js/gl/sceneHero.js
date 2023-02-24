@@ -3,7 +3,7 @@ import { Scene, Group, WebGLRenderTarget, NearestFilter } from "three";
 import { RandomParticles } from "./part-random.js";
 import { HeroParticles } from "./part-hero.js";
 
-import { Transform } from "../modules/animation/transform.js";
+import { Transform } from "../modules/animation/transform-full.js";
 
 export default class extends Scene {
   constructor() {
@@ -37,7 +37,7 @@ export default class extends Scene {
     this.trans?.render();
     // console.log(this.trans.perc);
 
-    if (this.randomParticles) this.randomParticles.render(t);
+    if (this.randomParticles) this.randomParticles.render(t, this.trans.perc);
     if (this.heroParticles) this.heroParticles.render(t, this.trans.perc);
   }
 

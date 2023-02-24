@@ -24,7 +24,7 @@ export class SphereParticles extends Points {
       randomColor.set([Math.random()], i);
     }
 
-    position.set(computeFibonacciSphere(count, 0.06));
+    position.set(computeFibonacciSphere(count, 0.05));
 
     this.geometry.setAttribute("a_random", new BufferAttribute(random, 1));
     this.geometry.setAttribute(
@@ -34,12 +34,17 @@ export class SphereParticles extends Points {
     this.geometry.setAttribute("position", new BufferAttribute(position, 3));
   }
 
-  render(t) {
+  render(t, perc) {
     this.material.time = t;
+    this.material.prog = perc;
     // console.log(t);
-    this.rotation.y = -t * 5;
-    this.rotation.z = t * 5 + Math.sin(t);
-    // this.rotation.x = t;
+    this.rotation.y = -t * 5 + perc * 4;
+    this.rotation.z = t * 5 + Math.sin(t) + perc * 4;
+    this.rotation.x = t * 5 + Math.sin(t * 3);
+
+    this.position.x = window.app.gl.mouse.ex * 0.03;
+    this.position.y = window.app.gl.mouse.ey * -0.03;
+    this.position.z = window.app.gl.mouse.ey * -0.1;
   }
 
   resize() {}

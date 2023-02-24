@@ -20,6 +20,9 @@ varying vec3 v_pos;
 
 #include ../noise.glsl
 
+// anima
+uniform float u_prog;
+
 const float NOISE_CTRL = 0.2;
 const float SHAPE_CTRL = 2.;
 
@@ -47,7 +50,7 @@ void main() {
 
 
 
-  pos.xyz += vec3(ns, ns, ns) * NOISE_CTRL;
+  // pos.xyz += vec3(ns, ns, ns) * .5;
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
 
   gl_Position = projectionMatrix * m_pos;

@@ -43,8 +43,10 @@ export class RandomParticles extends Points {
     this.geometry.setAttribute("position", new BufferAttribute(position, 3));
   }
 
-  render(t) {
+  render(t, perc) {
     this.material.time = t;
+    this.position.z = perc;
+    this.material.perc = perc;
     // console.log(t);
     // this.rotation.y = -t;
     // this.rotation.z = t * 0.01;

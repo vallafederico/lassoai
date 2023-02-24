@@ -15,6 +15,8 @@ uniform vec3 u_col1;
 uniform vec3 u_col2;
 uniform vec3 u_col3;
 
+uniform float u_prog;
+
 
 // GUI
 uniform float u_part_low;
@@ -32,15 +34,19 @@ void main() {
 
 
   // color computing
-  vec3 final_color = u_col2; // white
+  vec3 final_color = u_col1; 
 
-  if ( v_random_color > .33 && v_random_color < .66) { // blue
-    final_color = u_col1;
+  if ( v_random_color > .53) { // blue
+    final_color = u_col3;
   } 
 
-  // if (v_random_color > .99) { // yellow
-  //  final_color = u_col2;
-  // }
+  if (v_random_color > .99) { // yellow
+   final_color = u_col2;
+  }
+
+  if (v_random_color < u_prog * .6) { // yellow
+   final_color = u_col2;
+  }
 
 
 

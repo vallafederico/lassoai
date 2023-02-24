@@ -20,7 +20,10 @@ varying vec3 v_pos;
 
 #include ../noise.glsl
 
-const float NOISE_CTRL = 0.8;
+uniform float u_prog;
+
+
+// const float NOISE_CTRL = 0.8;
 
 void main() {
   vec3 pos = position;
@@ -36,9 +39,11 @@ void main() {
   // pos.xyz += vec3(ns, ns, ns) * NOISE_CTRL;
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
 
-  m_pos.x += sin(m_pos.x * 30. * ns) * .1;
-  m_pos.y += sin(m_pos.y * 30. * ns) * .1;
-  m_pos.z += sin(m_pos.z * 30. * ns) * .1;
+  m_pos.x += sin(m_pos.x * 30. * ns ) * .1;
+  m_pos.y += sin(m_pos.y * 30. * ns ) * .1;
+  m_pos.z += sin(m_pos.z * 30. * ns ) * .1;
+
+  m_pos.xyz *= u_prog + .5;
 
   gl_Position = projectionMatrix * m_pos;
   gl_PointSize = (((5.) * a_random) + .02) * (1. / -m_pos.z);
