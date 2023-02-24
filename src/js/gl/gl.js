@@ -50,11 +50,6 @@ export default class Gl {
     this.render();
   }
 
-  initEvents() {
-    // prettier-ignore
-    new ResizeObserver((entry) => this.resize(entry[0].contentRect)).observe(this.vp.container);
-  }
-
   create() {
     this.scene = new SceneHero();
     this.scene1 = new SceneData();
@@ -92,12 +87,15 @@ export default class Gl {
 
   resize() {
     this.vp.resize();
+
     this.renderer.setSize(this.vp.w, this.vp.h);
     this.camera.aspect = this.vp.w / this.vp.h;
     this.camera.updateProjectionMatrix();
 
-    this.post?.resize();
     if (this.scene) this.scene.resize();
+    if (this.scene1) this.scene1.resize();
+    if (this.scene2) this.scene2.resize();
+    this.post?.resize();
   }
 
   /* Utils
@@ -112,6 +110,10 @@ export default class Gl {
   }
 
   initEvents() {
+    new ResizeObserver((entry) => this.resize(entry[0].contentRect)).observe(
+      this.vp.container
+    );
+
     this.mouse = { x: 0, y: 0, ex: 0, ey: 0 };
     document.addEventListener("mousemove", (e) => {
       this.mouse.x = (e.clientX / this.vp.w) * 2 - 1;
