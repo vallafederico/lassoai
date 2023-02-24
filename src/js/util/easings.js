@@ -13,6 +13,9 @@ export function easeInOutSine(x) {
 export function easeOutExpo(x) {
   return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
 }
+export function defaultEasing(x) {
+  return Math.min(1, 1.001 - Math.pow(2, -10 * x));
+}
 
 export function easeInOutExpo(x) {
   return x === 0

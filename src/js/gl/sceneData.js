@@ -30,6 +30,9 @@ export default class extends Scene {
   render(t) {
     if (!this.isActive) return;
 
+    this.ctrl.rotation.y = window.app.gl.mouse.ex * 0.05;
+    // this.ctrl.rotation.x = window.app.gl.mouse.ey * 0.05;
+
     if (this.particles) this.particles.render(t);
     if (this.sphere) this.sphere.render(t);
   }

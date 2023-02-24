@@ -76,6 +76,12 @@ canvas {
   height: 100%;
 }
 
+[data-dom="trans"] {
+  padding: 10vh 0;
+  height: 50vh;
+  /* border: 1px dashed white; */
+}
+
 /* ------------------------------  Layout */
 body {
   /* background: var(--color-black); */
@@ -169,4 +175,19 @@ p b {
   color: var(--color-white);
 }
 
-/* ------------------------------  ... */
+/* ------------------------------  Animation */
+/* [data-a="char"] div,
+[data-a="word"] div,
+[data-a="line"] div {
+  overflow: hidden;
+  border: 1px dashed pink;
+  line-height: inherit;
+  display: inline-block;
+} */
+
+/* [data-a="char"] > div > div > div,
+[data-a="word"] > div > div > div,
+[data-a="line"] > div > div > div {
+  display: inline;
+  border: 1px solid white;
+} */

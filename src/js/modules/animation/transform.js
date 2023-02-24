@@ -25,8 +25,8 @@ export class Transform {
       1,
       map(
         window.sscroll.y, // value
-        this.bounds.top, // low1
-        this.bounds.bottom, // high1
+        this.bounds.top - this.bounds.innerHeight / 2, // low1
+        this.bounds.bottom - this.bounds.innerHeight / 2, // high1
         this.config.bounds[0],
         this.config.bounds[1] // low2, high2
       )

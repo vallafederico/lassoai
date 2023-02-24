@@ -6,6 +6,8 @@ export const clientRect = (element) => {
   let scroll = 0;
   scroll = window.app?.scroll?.y || window.pageYOffset;
 
+  const { innerWidth, innerHeight } = window;
+
   return {
     bottom: bounds.bottom + scroll,
     height: bounds.height,
@@ -16,5 +18,8 @@ export const clientRect = (element) => {
     wh: window.innerHeight,
     // ww: window.innerWidth,
     offset: bounds.top + scroll,
+    // window
+    innerWidth,
+    innerHeight,
   };
 };

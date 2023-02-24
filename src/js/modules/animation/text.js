@@ -16,13 +16,30 @@ export class Text extends Observe {
     });
 
     this.anim = {
-      d: 1.2,
+      d: 1.8,
       ease: "expo.out",
       delay: 0.1,
       each: 0.05,
       from: "start",
       once: false,
       ...anim,
+    };
+
+    this.params = {
+      in: {
+        y: "0%",
+        rotationX: 0,
+        rotationY: 0,
+        scale: 1,
+        autoAlpha: 1,
+      },
+      out: {
+        y: "0%",
+        rotationX: 90,
+        rotationY: -90,
+        scale: 0.7,
+        autoAlpha: 0,
+      },
     };
 
     this.element = element;
@@ -43,7 +60,7 @@ export class Text extends Observe {
   animateIn() {
     if (this.animation) this.animation.kill();
     this.animation = gsap.to(this.animated, {
-      y: "0%",
+      ...this.params.in,
       duration: this.anim.d,
       ease: this.anim.ease,
       delay: this.anim.delay,
@@ -58,7 +75,8 @@ export class Text extends Observe {
     this.stop();
     if (this.animation) this.animation.kill();
     this.animation = gsap.to(this.animated, {
-      y: "200%",
+      ...this.params.out,
+      autoAlpha: 0,
       duration: this.anim.d,
       ease: this.anim.ease,
       delay: 0,
@@ -71,12 +89,12 @@ export class Text extends Observe {
 
   setIn() {
     if (this.animation) this.animation.kill();
-    gsap.set(this.animated, { y: "0%" });
+    gsap.set(this.animated, this.params.in);
   }
 
   setOut() {
     if (this.animation) this.animation.kill();
-    gsap.set(this.animated, { y: "200%" });
+    gsap.set(this.animated, this.params.out);
   }
 }
 

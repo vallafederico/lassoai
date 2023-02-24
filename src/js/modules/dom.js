@@ -3,7 +3,7 @@ import { Text } from "./animation/text";
 
 export default class {
   constructor() {
-    // this.create();
+    this.create();
   }
 
   resize() {}

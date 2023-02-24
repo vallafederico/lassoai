@@ -6,6 +6,8 @@ import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js"
 // import { Shader } from "./mat/post/base";
 import { MergeShader } from "./mat/post/merge";
 
+import { Transform } from "../modules/animation/transform";
+
 export class Post extends EffectComposer {
   constructor({ renderer, scene, camera }) {
     super(renderer);
@@ -16,6 +18,7 @@ export class Post extends EffectComposer {
     this.addPass(this.mergePass);
 
     this.createPasses();
+    this.initEvents();
   }
 
   createPasses() {
@@ -37,11 +40,33 @@ export class Post extends EffectComposer {
 
   renderPasses(t) {
     this.renderGui();
+
+    this.trans?.forEach((el) => el.render());
+    this.mergePass.material.uniforms.switch1.value = this.trans[0].perc;
+    this.mergePass.material.uniforms.switch2.value = this.trans[1].perc;
+    // this.bloomPass.strength += this.trans[0];
   }
 
   renderGui() {
     this.bloomPass.strength = window.UI.params.bloomStrength;
     this.bloomPass.radius = window.UI.params.bloomRadius;
     this.bloomPass.threshold = window.UI.params.bloomTresh;
+  }
+
+  resize() {
+    this.setSize(window.innerWidth, window.innerHeight);
+    this.trans?.forEach((el) => el.resize());
+    // this.bloomPass.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  // ** Animation
+  initEvents() {
+    this.trans = [...document.querySelectorAll('[data-dom="trans"]')].map(
+      (el) => {
+        return new Transform({
+          element: el,
+        });
+      }
+    );
   }
 }

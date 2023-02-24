@@ -9,7 +9,7 @@ export const CopyShader = {
     diff_2: { value: null },
     opacity: { value: 0.0 },
     switch1: { value: 0.0 },
-    switch2: { value: 1.0 },
+    switch2: { value: 0.0 },
   },
   vertexShader,
   fragmentShader,

@@ -1,23 +1,19 @@
 import Lenis from "@studio-freight/lenis";
-import { easeOutExpo } from "../util/easings.js";
-
-// export function customExpo(x) {
-//   return Math.min(1, 1.001 - Math.pow(2, -10 * x));
-// }
+import { defaultEasing } from "../util/easings.js";
 
 export default class extends Lenis {
   constructor() {
     super({
-      duration: 1,
+      duration: 1.2,
       smooth: true,
-      easing: easeOutExpo,
+      easing: defaultEasing,
       direction: "vertical",
       smoothTouch: false,
       touchMultiplier: 2,
     });
 
     this.isActive = true;
-    this.timeFactor = 8;
+    this.timeFactor = 7;
     this.time = 0;
 
     this.init();

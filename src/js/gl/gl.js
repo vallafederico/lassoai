@@ -1,5 +1,6 @@
 import { WebGLRenderer, sRGBEncoding } from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import Tween from "gsap";
 
 import Loader from "./util/loader.js";
 import Viewport from "./viewport.js";
@@ -29,6 +30,7 @@ export default class Gl {
     this.paused = false;
     this.time = 0;
 
+    this.initEvents();
     this.init();
   }
 
@@ -61,7 +63,7 @@ export default class Gl {
 
   render() {
     if (this.paused) return;
-    this.time += 0.0005;
+    this.time += 0.0009;
 
     this.controls?.update();
     requestAnimationFrame(this.render.bind(this));
@@ -94,6 +96,7 @@ export default class Gl {
     this.camera.aspect = this.vp.w / this.vp.h;
     this.camera.updateProjectionMatrix();
 
+    this.post?.resize();
     if (this.scene) this.scene.resize();
   }
 
@@ -106,5 +109,19 @@ export default class Gl {
       this.camera.position.z * Math.tan(fovInRad / 2) * 2
     );
     return { w: height * (this.vp.w / this.vp.h), h: height };
+  }
+
+  initEvents() {
+    this.mouse = { x: 0, y: 0, ex: 0, ey: 0 };
+    document.addEventListener("mousemove", (e) => {
+      this.mouse.x = (e.clientX / this.vp.w) * 2 - 1;
+      this.mouse.y = (e.clientY / this.vp.h) * 2 - 1;
+      Tween.to(this.mouse, {
+        ex: this.mouse.x,
+        ey: this.mouse.y,
+        duration: 1.5,
+        ease: "slow",
+      });
+    });
   }
 }

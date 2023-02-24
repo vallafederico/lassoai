@@ -3,11 +3,14 @@ import { Scene, Group, WebGLRenderTarget, NearestFilter } from "three";
 import { RandomParticles } from "./part-random.js";
 import { HeroParticles } from "./part-hero.js";
 
+import { Transform } from "../modules/animation/transform.js";
+
 export default class extends Scene {
   constructor() {
     super();
     this.isActive = true;
 
+    this.initEvents();
     this.createTarget();
     this.create();
   }
@@ -31,8 +34,11 @@ export default class extends Scene {
   render(t) {
     if (!this.isActive) return;
 
+    this.trans?.render();
+    // console.log(this.trans.perc);
+
     if (this.randomParticles) this.randomParticles.render(t);
-    if (this.heroParticles) this.heroParticles.render(t);
+    if (this.heroParticles) this.heroParticles.render(t, this.trans.perc);
   }
 
   toTarget(renderer, camera) {
@@ -45,6 +51,7 @@ export default class extends Scene {
   }
 
   resize() {
+    this.trans?.resize();
     this.createTarget();
   }
 
@@ -54,5 +61,12 @@ export default class extends Scene {
       window.innerHeight * window.app.gl.vp.pixelRatio
     );
     this.rt.texture.minFilter = this.rt.texture.magFilter = NearestFilter;
+  }
+
+  // ANIMATION
+  initEvents() {
+    this.trans = new Transform({
+      element: document.querySelector('[data-dom="hero"]'),
+    });
   }
 }
