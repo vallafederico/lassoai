@@ -34,7 +34,7 @@ void main() {
 
 
   // color computing
-  vec3 final_color = u_col1; 
+  vec3 final_color = u_col2; 
 
   if ( v_random_color > .53) { // blue
     final_color = u_col3;

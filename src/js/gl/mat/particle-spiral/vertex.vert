@@ -2,6 +2,7 @@
 precision mediump float;
 
 attribute vec3 position;
+attribute vec3 position2;
 attribute vec2 uv;
 attribute vec3 a_position;
 uniform mat4 modelViewMatrix;
@@ -18,42 +19,35 @@ varying float v_random;
 varying float v_random_color;
 varying vec3 v_pos;
 
-// animation
-uniform float u_perc;
-uniform float u_speed;
-uniform float u_height;
-
 #include ../noise.glsl
 
-const float NOISE_CTRL = 0.8;
+uniform float u_prog;
+
 
 void main() {
+  float progress = smoothstep(.0, 1., u_prog * 1.02);
+
   vec3 pos = position;
+  vec3 pos2 = position2;
 
-  float ns = cnoise(vec4(
-    pos.x * 4., 
-    pos.y * 5., 
-    pos.z * 3., 
-    u_time
-  )) * .2;
+  pos2.z = fract(pos2.z - v_random + u_time * 3.); // move with time
+  pos2.x *= 0. + (pos2.y + .5) * (pos2.y * .8);
+  pos2.y *= 0. + (pos2.x + .5) * (pos2.x * .8);
 
-  pos.y = fract(pos.y - v_random - u_time - u_height) - .5;
+  pos = mix(pos2, pos, progress);
+  pos.z += u_prog * .65;
 
-  pos.x *= .1 + (pos.y + .5) * pos.y;
-  pos.z *= .1 + (pos.y + .5) * pos.y;
+  // pos.xy -= smoothstep(.5, 1., u_prog) * .4;
 
-
-  pos.xyz += vec3(ns, ns, ns) * (1. - u_perc); // NOISE_CTRL;
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
 
+
   gl_Position = projectionMatrix * m_pos;
-  gl_PointSize = (((10.) * a_random) + .02) * (1. / -m_pos.z);
+  gl_PointSize = (((5.) * a_random) + .02) * (1. / -m_pos.z);
 
 
   v_uv = uv;
   v_random = a_random;
   v_random_color = a_random_color;
   v_pos = pos;
-  // v_color = a_color;
 }
-

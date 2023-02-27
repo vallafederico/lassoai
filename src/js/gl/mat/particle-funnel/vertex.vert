@@ -20,8 +20,12 @@ varying vec3 v_pos;
 
 #include ../noise.glsl
 
-const float NOISE_CTRL = 0.2;
+const float NOISE_CTRL = 0.;
 const float SHAPE_CTRL = 2.;
+
+// animation
+uniform float u_prog;
+uniform float u_height;
 
 void main() {
   vec3 pos = position;
@@ -33,7 +37,7 @@ void main() {
     u_time
   )) * .2;
 
-  pos.y = fract(pos.y - v_random - u_time) - .5;
+  pos.y = fract(pos.y - v_random - u_time - u_height) - .5;
 
   // funnel shape
   pos.x *= .1 + (pos.y + .5) * (pos.y * .8);
@@ -45,7 +49,7 @@ void main() {
 
 
 
-  pos.xyz += vec3(ns, ns, ns) * NOISE_CTRL;
+  pos.xyz += vec3(ns, ns, ns) * ((1. - u_prog) * .5) ;
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
 
   gl_Position = projectionMatrix * m_pos;

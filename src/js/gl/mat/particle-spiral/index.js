@@ -22,14 +22,11 @@ export default class extends RawShaderMaterial {
       u_col1: { value: part_col1 },
       u_col2: { value: part_col2 },
       u_col3: { value: part_col3 },
-      // * animation
-      u_perc: { value: 0 },
-      u_speed: { value: 0.0 },
-      u_height: { value: 0 },
+      // *animation
+      u_prog: { value: 0 },
     };
 
     this.side = DoubleSide;
-    // this.wireframe= true;
     this.transparent = true;
 
     this.depthTest = false;
@@ -39,14 +36,12 @@ export default class extends RawShaderMaterial {
 
   set time(t) {
     this.uniforms.u_time.value = t;
-    this.uniforms.u_speed.value = window.sscroll.speed;
-    this.uniforms.u_height.value = window.sscroll.percent;
 
     this.renderGui();
   }
 
-  set perc(p) {
-    this.uniforms.u_perc.value = p;
+  set prog(p) {
+    this.uniforms.u_prog.value = p;
   }
 
   renderGui() {

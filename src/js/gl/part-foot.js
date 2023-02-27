@@ -13,7 +13,7 @@ export class FootParticles extends Points {
   }
 
   createAttributes() {
-    const count = 20000;
+    const count = 2000;
 
     const random = new Float32Array(count);
     const randomColor = new Float32Array(count);
