@@ -19,7 +19,7 @@ export class Text extends Observe {
       d: 1.8,
       ease: "expo.out",
       delay: 0.1,
-      each: 0.05,
+      // each: 0.05,
       from: "start",
       once: false,
       ...anim,
@@ -28,17 +28,19 @@ export class Text extends Observe {
     this.params = {
       in: {
         y: "0%",
-        rotationX: 0,
-        rotationY: 0,
-        scale: 1,
         autoAlpha: 1,
+        // rotationX: 0,
+        // rotationY: 0,
+        // scale: 1,
+        // transformOrigin: "50% 100%",
       },
       out: {
-        y: "0%",
-        rotationX: 90,
-        rotationY: -90,
-        scale: 0.7,
+        y: "50%",
         autoAlpha: 0,
+        // rotationX: 90,
+        // rotationY: 90,
+        // scale: 0.7,
+        // transformOrigin: "50% 100%",
       },
     };
 

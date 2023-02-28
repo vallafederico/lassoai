@@ -1,4 +1,6 @@
 import { Text } from "./animation/text";
+import { Alpha } from "./animation/alpha";
+import { Count } from "./animation/count";
 // import { Transform } from "./animation/transform";
 
 export default class {
@@ -16,6 +18,14 @@ export default class {
         '[data-a="char"],[data-a="word"],[data-a="line"]'
       ),
     ].map((el) => new Text({ element: el }));
+
+    this.alphas = [...document.querySelectorAll('[data-a="alpha"]')].map(
+      (el) => new Alpha({ element: el })
+    );
+
+    this.count = [...document.querySelectorAll('[data-a="count"]')].map(
+      (el) => new Count({ element: el })
+    );
   }
 
   destroy() {

@@ -39,10 +39,6 @@ export default class extends Scene {
     this.ctrl.rotation.y = window.app.gl.mouse.ex * 0.05 + this.trans.perc;
     // this.ctrl.rotation.x = window.app.gl.mouse.ey * 0.05;
 
-    let { perc } = this.trans;
-    perc *= 2;
-    this.sphere.scale.set(perc, perc, perc);
-
     if (this.particles) this.particles.render(t, this.trans.perc);
     if (this.sphere) this.sphere.render(t, this.trans.perc);
   }

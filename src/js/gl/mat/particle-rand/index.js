@@ -48,6 +48,12 @@ export default class extends RawShaderMaterial {
   renderGui() {
     this.uniforms.u_part_low.value = window.UI.particles.particleLow;
     this.uniforms.u_part_high.value = window.UI.particles.particleHigh;
+
+    this.uniforms.u_col2.value = [
+      window.UI.particles.r,
+      window.UI.particles.g,
+      window.UI.particles.b,
+    ];
   }
 }
 

@@ -1,5 +1,5 @@
 import { Scene, Group, WebGLRenderTarget } from "three";
-import { FootParticles } from "./part-foot.js";
+// import { FootParticles } from "./part-foot.js";
 import { SpiralParticles } from "./part-spiral.js";
 import { Transform } from "../modules/animation/transform-bot.js";
 
@@ -31,13 +31,14 @@ export default class extends Scene {
 
   render(t) {
     if (!this.isActive) return;
+    const sceneTime = t * 0.5;
 
     this.trans?.render();
     // console.log(this.trans.perc);
     // this.ctrl.position.z = -1 + this.trans.perc;
 
     // if (this.particles) this.particles.render(t, this.trans.perc);
-    if (this.spiral) this.spiral.render(t, this.trans.perc);
+    if (this.spiral) this.spiral.render(sceneTime, this.trans.perc);
   }
 
   toTarget(renderer, camera) {

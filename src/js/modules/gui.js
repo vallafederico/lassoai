@@ -22,35 +22,35 @@ export class UI extends GUI {
     this.postFolder = this.addFolder("Main");
     this.postFolder.add(this.ctrls, "domVisible", 0, 10, 0.001);
 
-    // scenes
-    this.scenes = {
-      scene1: () => {
-        window.app.gl.post.mergePass.material.uniforms.switch1.value = 0;
-        window.app.gl.post.mergePass.material.uniforms.switch2.value = 0;
-      },
-      scene2: () => {
-        window.app.gl.post.mergePass.material.uniforms.switch1.value = 1;
-        window.app.gl.post.mergePass.material.uniforms.switch2.value = 0;
-      },
-      scene3: () => {
-        window.app.gl.post.mergePass.material.uniforms.switch2.value = 1;
-      },
-    };
-
-    this.scenesFolder = this.addFolder("Scenes");
-    this.scenesFolder.add(this.scenes, "scene1");
-    this.scenesFolder.add(this.scenes, "scene2");
-    this.scenesFolder.add(this.scenes, "scene3");
-
     // particles
     this.particles = {
       particleLow: 0.1,
       particleHigh: 0.759,
+      r: 0.9294117647058824,
+      g: 1,
+      b: 0,
     };
 
     this.particlesFolder = this.addFolder("Particles");
-    this.particlesFolder.add(this.particles, "particleLow", 0, 1, 0.001);
-    this.particlesFolder.add(this.particles, "particleHigh", 0, 1, 0.001);
+    this.particlesFolder.add(
+      this.particles,
+      "particleLow",
+      0,
+      1,
+      0.0000000000001
+    );
+    this.particlesFolder.add(
+      this.particles,
+      "particleHigh",
+      0,
+      1,
+      0.0000000000001
+    );
+
+    this.colorFolder = this.particlesFolder.addFolder("Color");
+    this.colorFolder.add(this.particles, "r", 0, 1, 0.001);
+    this.colorFolder.add(this.particles, "g", 0, 1, 0.001);
+    this.colorFolder.add(this.particles, "b", 0, 1, 0.001);
 
     // post
     this.params = {
@@ -63,17 +63,5 @@ export class UI extends GUI {
     this.postFolder.add(this.params, "bloomStrength", 0, 10, 0.001);
     this.postFolder.add(this.params, "bloomRadius", 0, 2, 0.001);
     this.postFolder.add(this.params, "bloomTresh", 0, 1, 0.001);
-
-    // animation
-    this.animation = this.addFolder("Animation");
-
-    this.scene1 = {};
-    this.scene1 = this.animation.addFolder("Scene 1");
-
-    this.scene2 = {};
-    this.scene2 = this.animation.addFolder("Scene 2");
-
-    this.scene3 = {};
-    this.scene3 = this.animation.addFolder("Scene 3");
   }
 }

@@ -1,9 +1,7 @@
 import gsap from "gsap";
 import { Observe } from "../../util/observe";
 
-// NEEDS CHECKING!
-
-export class Alpha extends Observe {
+export class Count extends Observe {
   constructor({ element, anim }) {
     super({
       element,
@@ -15,13 +13,17 @@ export class Alpha extends Observe {
     });
 
     this.anim = {
-      d: 0.8,
-      ease: "ease.out",
+      d: 1.2,
+      ease: "linear",
       delay: 0.1,
       // each: 0.05,
       from: "start",
       once: false,
       ...anim,
+    };
+
+    this.ctrl = {
+      val: 0,
     };
 
     this.element = element;
@@ -39,34 +41,35 @@ export class Alpha extends Observe {
 
   animateIn() {
     if (this.animation) this.animation.kill();
-    this.animation = gsap.to(this.animated, {
-      autoAlpha: 1,
-      y: "0%",
+    console.log("animatein");
+    this.animation = gsap.to(this.ctrl, {
+      val: 88,
       duration: this.anim.d,
       ease: this.anim.ease,
       delay: this.anim.delay,
+      onUpdate: () => {
+        this.animated.innerHTML = Math.floor(this.ctrl.val);
+      },
     });
   }
 
   animateOut() {
     this.stop();
     if (this.animation) this.animation.kill();
-    this.animation = gsap.to(this.animated, {
-      autoAlpha: 0,
-      y: "30%",
-      duration: this.anim.d,
-      ease: this.anim.ease,
-      delay: 0,
-    });
   }
 
   setIn() {
     if (this.animation) this.animation.kill();
-    gsap.set(this.animated, { autoAlpha: 1 });
+    // gsap.set(this.animated, { autoAlpha: 1 });
   }
 
   setOut() {
     if (this.animation) this.animation.kill();
-    gsap.set(this.animated, { autoAlpha: 0, y: "30%" });
+    gsap.set(this.ctrl, {
+      val: 0,
+      onUpdate: () => {
+        this.animated.innerHTML = Math.floor(this.ctrl.val);
+      },
+    });
   }
 }

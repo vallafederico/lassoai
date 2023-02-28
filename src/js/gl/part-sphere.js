@@ -41,16 +41,17 @@ export class SphereParticles extends Points {
   render(t, perc) {
     this.material.time = t;
     this.material.prog = perc;
-    // console.log(t);
+
     this.rotation.y = -t * 5 + perc * 4;
     this.rotation.z = t * 5 + Math.sin(t) + perc * 4;
     this.rotation.x = t * 5 + Math.sin(t * 3);
 
-    // this.anim.y = 0.4 - perc * 0.8;
+    let scaledPerc = perc * 1.8;
+    this.scale.set(scaledPerc, scaledPerc, scaledPerc);
 
-    this.position.x = window.app.gl.mouse.ex * 0.03;
-    this.position.y = window.app.gl.mouse.ey * -0.03 + this.anim.y;
-    this.position.z = window.app.gl.mouse.ey * -0.1;
+    // this.position.x = window.app.gl.mouse.ex * 0.03;
+    // this.position.y = window.app.gl.mouse.ey * -0.03 + this.anim.y;
+    // this.position.z = window.app.gl.mouse.ey * -0.1;
   }
 
   resize() {}

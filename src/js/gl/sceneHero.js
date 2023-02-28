@@ -33,12 +33,15 @@ export default class extends Scene {
 
   render(t) {
     if (!this.isActive) return;
+    const sceneTime = t * 2;
 
     this.trans?.render();
     // console.log(this.trans.perc);
 
-    if (this.randomParticles) this.randomParticles.render(t, this.trans.perc);
-    if (this.heroParticles) this.heroParticles.render(t, this.trans.perc);
+    if (this.randomParticles)
+      this.randomParticles.render(sceneTime, this.trans.perc);
+    if (this.heroParticles)
+      this.heroParticles.render(sceneTime, this.trans.perc);
   }
 
   toTarget(renderer, camera) {

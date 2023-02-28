@@ -19,7 +19,8 @@ varying float v_random;
 varying float v_random_color;
 varying vec3 v_pos;
 
-#include ../noise.glsl
+// #include ../noise.glsl
+#include ../rotate.glsl
 
 uniform float u_prog;
 
@@ -28,6 +29,10 @@ void main() {
   float progress = smoothstep(.0, 1., u_prog * 1.02);
 
   vec3 pos = position;
+  pos = rotate(pos, vec3(0., 0., 1.), (u_prog * 2.) + u_time * 3.);
+
+
+
   vec3 pos2 = position2;
 
   pos2.z = fract(pos2.z - v_random + u_time * 3.); // move with time

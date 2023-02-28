@@ -47,13 +47,10 @@ void main() {
   if (v_random_color < (u_prog * .6) ) { // yellow
    final_color = u_col2;
   }
-
-
-
   
 
   gl_FragColor.rgb = final_color;
-  gl_FragColor.a = circle - .8;
+  gl_FragColor.a = circle - .8 + u_prog * .8;
 
   // gl_FragColor = vec4(1., 0., 0., 1.);
 }
