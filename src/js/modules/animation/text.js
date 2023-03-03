@@ -16,13 +16,13 @@ export class Text extends Observe {
     });
 
     this.anim = {
-      d: 1.3,
+      d: 1.8,
       ease: "expo.out",
       delay: 0.1,
-      each: 0.02,
+      each: 0.015,
       from: "start",
       once: false,
-      transformOrigin: "top center",
+      transformOrigin: "top left",
       ...anim,
     };
 
@@ -31,7 +31,7 @@ export class Text extends Observe {
         y: "0%",
         autoAlpha: 1,
         // rotationX: 0,
-        // rotationY: 0,
+        // rotationZ: 0,
         // scale: 1,
         // transformOrigin: "50% 100%",
       },
@@ -39,7 +39,7 @@ export class Text extends Observe {
         y: "30%",
         autoAlpha: 0,
         // rotationX: 90,
-        // rotationY: 90,
+        // rotationZ: 20,
         // scale: 0.7,
         // transformOrigin: "50% 100%",
       },
