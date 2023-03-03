@@ -45,8 +45,8 @@ void main() {
 
   // pos.xy -= smoothstep(.5, 1., u_prog) * .1;
   float prog_remap = smoothstep(.8, 1., u_prog);
-  pos.x -= prog_remap * .1;
-  pos.y += prog_remap * .05;
+  // pos.x -= prog_remap * .1;
+  // pos.y += prog_remap * .05;
 
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
 
