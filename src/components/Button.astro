@@ -2,11 +2,48 @@
 import Logo from "./Logo.astro";
 ---
 
-<button
+<!-- <button
   class="flex items-center rounded-md rounded-br-xl bg-yellow px-6 py-3 text-black"
 >
   <slot />
   <div class="flex h-[2em] items-center pl-3">
     <Logo color="#000" />
   </div>
+</button> -->
+<button class="flex items-center px-6 py-3 text-black">
+  <div class="relative overflow-hidden">
+    <div class="animatable">
+      <slot />
+      <figure class="absolute"><slot /></figure>
+    </div>
+  </div>
+  <div class="flex h-[2em] items-center pl-3">
+    <Logo color="#000" />
+  </div>
 </button>
+
+<style>
+  button {
+    transition: all 0.4s ease-out;
+    border-radius: 0.5rem 0.5rem 1rem 0.5rem;
+    background-color: yellow;
+  }
+
+  button:hover {
+    transition: all 0.4s ease-out;
+    border-radius: 1.2rem 1.2rem 0.5rem 1.2rem;
+    background-color: white;
+  }
+
+  button .animatable {
+    position: relative;
+    transform: translateY(0%);
+    transition: all 0.4s var(--ease-cubic-out);
+  }
+
+  button:hover .animatable {
+    position: relative;
+    transform: translateY(-100%);
+    transition: all 0.5s var(--ease-cubic-out);
+  }
+</style>

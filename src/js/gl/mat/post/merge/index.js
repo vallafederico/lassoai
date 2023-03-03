@@ -10,6 +10,9 @@ export const CopyShader = {
     opacity: { value: 0.0 },
     switch1: { value: 0.0 },
     switch2: { value: 0.0 },
+    // animation
+    u_start: { value: 0.0 },
+    // u_mouse: { value: [0, 0] },
   },
   vertexShader,
   fragmentShader,

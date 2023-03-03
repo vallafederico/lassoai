@@ -6,6 +6,8 @@ uniform float switch1;
 uniform float switch2;
 varying vec2 vUv;
 
+uniform float u_start;
+
 // transition params
 const vec2 direction = vec2(-0.2, 1.);
 
@@ -31,13 +33,16 @@ void main() {
     vec3 d2 = texture2D(diff_2, vUv).rgb;
 
     vec3 final_scene = transition(vUv, switch1, diff_0, diff_1);
+    
 
     if (switch1 > .9999) {
         final_scene = transition(vUv, switch2, diff_1, diff_2);
     }
 
+    final_scene = mix(vec3(0.), final_scene, u_start);
 
     gl_FragColor.rgb = final_scene;
+    // gl_FragColor.rgb = vec3(dist);
     gl_FragColor.a = 1.;
 }
 

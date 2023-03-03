@@ -6,7 +6,6 @@ import Navbar from "src/components/Navbar.astro";
 import Footer from "src/components/Footer.astro";
 
 import Square from "src/components/Square.astro";
-import Logo from "../components/Logo.astro";
 import Button from "src/components/Button.astro";
 ---
 
@@ -23,7 +22,7 @@ import Button from "src/components/Button.astro";
         <h2 class="leading-[1.2em] lg:text-[6vw]">
           <b>Grow</b> Your <br /> Sales Pipeline <br />with Lasso.
         </h2>
-        <h1><b>The AI-Powered</b> Contact Discovery Solution.</h1>
+        <h1 data-a="char"><b>The AI-Powered</b> Contact Discovery Solution.</h1>
         <p class="max-w-[35ch]">
           We've developed a cutting-edge <b>AI platform</b> that can quickly and
           accurately <b> find the contacts you're missing.</b>
@@ -33,8 +32,8 @@ import Button from "src/components/Button.astro";
     <Section className="flex flex-col">
       <div class="flex justify-end">
         <div class="c my-8 lg:max-w-[30vw]">
-          <h2>Unlock the untapped.</h2>
-          <h3 data-a="alpha">
+          <h2 data-a="char">Unlock the untapped.</h2>
+          <h3 data-a="word">
             It’s not a matter of ‘if’ there are contacts out there that you’re
             missing, it’s a matter of <b>‘how many?’</b>
           </h3>
@@ -49,8 +48,8 @@ import Button from "src/components/Button.astro";
       </div>
       <div>
         <div class="c my-8 lg:max-w-[30vw]">
-          <h2>100% additive.</h2>
-          <h3 data-a="alpha">Found Contacts. <b>Found money.</b></h3>
+          <h2 data-a="char">100% additive.</h2>
+          <h3 data-a="word">Found Contacts. <b>Found money.</b></h3>
           <p data-a="alpha">
             We've developed an <b>AI model</b> that can analyze your existing contacts
             and cross-reference them with publicly available data sources to identify
@@ -86,12 +85,12 @@ import Button from "src/components/Button.astro";
         </div>
       </div>
       <div class="c top-[50vh] lg:sticky lg:max-w-[30vw]">
-        <h2>Gap Analysis</h2>
-        <p>
+        <h2 data-a="char">Gap Analysis</h2>
+        <p data-a="alpha">
           A leading NYC based <b> advertising company</b> used Lasso to perform a
           gap analysis on their top 1,000 target accounts selling on Shopify.
         </p>
-        <div class="my-5 flex max-w-[40ch] items-center">
+        <div class="my-5 flex max-w-[40ch] items-center" data-a="alpha">
           <div class="flex aspect-square h-[5vh] items-center justify-center">
             <Square color="yellow" />
           </div>
@@ -100,9 +99,9 @@ import Button from "src/components/Button.astro";
             titles with “growth” as a keyword
           </p>
         </div>
-        <h3>
-          They were <b> missing 87%</b> of their <b> exact match ICP</b> (ideal customer
-          profile) titles.
+        <h3 data-a="word">
+          They were <b> missing 87%</b> of their <br />
+          <b> exact match ICP</b> (ideal customer profile) titles.
         </h3>
       </div>
     </Section>
@@ -127,19 +126,21 @@ import Button from "src/components/Button.astro";
         </p>
       </div>
     </Section>
-    <Section>
-      <div class="c items-end lg:flex lg:px-6">
-        <h2 class="py-0 text-[15vw] lg:max-w-[45%] lg:text-[6vw]">
+    <Section className="pl-[50vw]">
+      <div class="c flex-col lg:flex">
+        <h2 data-a="char" class="py-0 text-[15vw] lg:text-[6vw]">
           100% shots you didn’t take.
         </h2>
 
-        <div class="lg:px-6">
-          <h3>Built by sales people, <b>for sales people.</b></h3>
-          <p class="max-w-[40ch]">
+        <div class="">
+          <h3 data-a="alpha">
+            Built by sales people, <b>for sales people.</b>
+          </h3>
+          <p data-a="alpha" class="max-w-[40ch]">
             We’re <b> programmatically solving</b> some of our biggest challenges
             with artificial intelligence.
           </p>
-          <div class="my-8">
+          <div data-a="alpha" class="my-8">
             <Button>Join The Waitlist</Button>
           </div>
         </div>

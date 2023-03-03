@@ -5,11 +5,13 @@
   --color-white: #f5f5f5;
   --color-accent: #edff00;
   --color-lg: #99a0a9;
-
   /* Spaces */
   --space-s: 0.5rem;
   --space-m: 2rem;
   --space-l: 4rem;
+  /* Easings */
+  --ease-cubic-in: cubic-bezier(0.32, 0, 0.67, 0);
+  --ease-cubic-out: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 /* ------------------------------  Utils */
@@ -191,3 +193,7 @@ p b {
   display: inline;
   border: 1px solid white;
 } */
+
+.svg .active {
+  fill: var(--color-accent);
+}

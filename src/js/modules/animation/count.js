@@ -41,7 +41,7 @@ export class Count extends Observe {
 
   animateIn() {
     if (this.animation) this.animation.kill();
-    console.log("animatein");
+    // console.log("animatein");
     this.animation = gsap.to(this.ctrl, {
       val: 88,
       duration: this.anim.d,

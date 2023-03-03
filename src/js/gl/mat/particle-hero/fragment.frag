@@ -15,7 +15,6 @@ uniform vec3 u_col1;
 uniform vec3 u_col2;
 uniform vec3 u_col3;
 
-
 // GUI
 uniform float u_part_low;
 uniform float u_part_high;
@@ -41,9 +40,6 @@ void main() {
   if (v_random_color > .99) { // yellow
    final_color = u_col2;
   }
-
-
-
   
 
   gl_FragColor.rgb = final_color;

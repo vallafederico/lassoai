@@ -16,6 +16,8 @@ uniform vec3 u_col2;
 uniform vec3 u_col3;
 
 uniform float u_prog;
+varying float v_map_prog;
+
 
 
 // GUI
@@ -33,27 +35,33 @@ void main() {
   ) * .5;
 
 
+  float dist = distance(v_pos.xy, vec2(-.2, 0.));
+  dist = smoothstep(.1, .8, dist);
+  // circle -= dist;
+
+  float final_circle = mix(circle, circle - dist, v_map_prog);
+
   // color computing
   vec3 final_color = u_col2; 
 
-  if ( v_random_color > .53) { // blue
+  if ( v_random_color < (u_prog) * .8 ) { // blue
     final_color = u_col3;
   } 
 
-  if (v_random_color > .99) { // yellow
-   final_color = u_col2;
-  }
+  // if (v_random_color > .99) { // yellow
+  //  final_color = u_col2;
+  // }
 
-  if (v_random_color < (u_prog * .6) ) { // yellow
-   final_color = u_col2;
-  }
+  // if (v_random_color < (u_prog * .6) ) { // yellow
+  //  final_color = u_col2;
+  // }
 
 
 
   
 
   gl_FragColor.rgb = final_color;
-  gl_FragColor.a = circle - .8;
+  gl_FragColor.a = final_circle - .8;
 
   // gl_FragColor = vec4(1., 0., 0., 1.);
 }

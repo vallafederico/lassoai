@@ -16,10 +16,10 @@ export class Text extends Observe {
     });
 
     this.anim = {
-      d: 1.8,
+      d: 1.3,
       ease: "expo.out",
       delay: 0.1,
-      // each: 0.05,
+      each: 0.01,
       from: "start",
       once: false,
       ...anim,

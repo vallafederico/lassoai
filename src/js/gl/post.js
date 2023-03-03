@@ -2,6 +2,7 @@ import { Vector2 } from "three";
 import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 // import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import Tween from "gsap";
 
 // import { Shader } from "./mat/post/base";
 import { MergeShader } from "./mat/post/merge";
@@ -19,6 +20,13 @@ export class Post extends EffectComposer {
 
     this.createPasses();
     this.initEvents();
+
+    Tween.to(this.mergePass.material.uniforms.u_start, {
+      value: 1,
+      duration: 0.5,
+      delay: 0.5,
+      ease: "expo.out",
+    });
   }
 
   createPasses() {
@@ -44,6 +52,10 @@ export class Post extends EffectComposer {
     this.trans?.forEach((el) => el.render());
     this.mergePass.material.uniforms.switch1.value = this.trans[0].perc;
     this.mergePass.material.uniforms.switch2.value = this.trans[1].perc;
+    // this.mergePass.material.uniforms.u_mouse.value = [
+    //   (window.app.gl.mouse.ex + 1) / 2,
+    //   (window.app.gl.mouse.ey + 1) / 2,
+    // ];
     // this.bloomPass.strength += this.trans[0];
   }
 

@@ -16,11 +16,12 @@ export class Alpha extends Observe {
 
     this.anim = {
       d: 0.8,
-      ease: "ease.out",
+      ease: "slow.out",
       delay: 0.1,
       // each: 0.05,
       from: "start",
       once: false,
+      transformOrigin: "top center",
       ...anim,
     };
 
@@ -42,6 +43,7 @@ export class Alpha extends Observe {
     this.animation = gsap.to(this.animated, {
       autoAlpha: 1,
       y: "0%",
+      scaleY: 1,
       duration: this.anim.d,
       ease: this.anim.ease,
       delay: this.anim.delay,
@@ -67,6 +69,6 @@ export class Alpha extends Observe {
 
   setOut() {
     if (this.animation) this.animation.kill();
-    gsap.set(this.animated, { autoAlpha: 0, y: "30%" });
+    gsap.set(this.animated, { autoAlpha: 0, y: "30%", scaleY: 0.85 });
   }
 }

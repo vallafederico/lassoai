@@ -23,6 +23,7 @@ varying vec3 v_pos;
 #include ../rotate.glsl
 
 uniform float u_prog;
+varying float v_map_prog;
 
 
 void main() {
@@ -42,7 +43,10 @@ void main() {
   pos = mix(pos2, pos, progress);
   pos.z += u_prog * .65;
 
-  // pos.xy -= smoothstep(.5, 1., u_prog) * .4;
+  // pos.xy -= smoothstep(.5, 1., u_prog) * .1;
+  float prog_remap = smoothstep(.8, 1., u_prog);
+  pos.x -= prog_remap * .1;
+  pos.y += prog_remap * .05;
 
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
 
@@ -55,4 +59,5 @@ void main() {
   v_random = a_random;
   v_random_color = a_random_color;
   v_pos = pos;
+  v_map_prog = prog_remap;
 }

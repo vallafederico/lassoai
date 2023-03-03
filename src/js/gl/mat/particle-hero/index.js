@@ -26,6 +26,7 @@ export default class extends RawShaderMaterial {
       u_perc: { value: 0 },
       u_speed: { value: 0.0 },
       u_height: { value: 0 },
+      // u_mouse: { value: [0, 0] },
     };
 
     this.side = DoubleSide;
@@ -39,8 +40,13 @@ export default class extends RawShaderMaterial {
 
   set time(t) {
     this.uniforms.u_time.value = t;
+
     this.uniforms.u_speed.value = window.sscroll.speed;
     this.uniforms.u_height.value = window.sscroll.percent;
+    // this.uniforms.u_mouse.value = [
+    //   (window.app.gl.mouse.x + 1) / 2,
+    //   (window.app.gl.mouse.y + 1) / 2,
+    // ];
 
     this.renderGui();
   }
