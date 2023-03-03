@@ -18,9 +18,10 @@ const LINKS = [
 ];
 ---
 
-<footer class="c footer flex items-end justify-between py-4">
-  <div class="flex w-[25vw] items-end">
-    <div class="flex h-[10vh] items-end pr-10">
+<footer class="c footer my-8 items-end justify-between py-4 lg:flex">
+  <!-- col1 -->
+  <div class="flex lg:w-[25vw] lg:items-end">
+    <div class="hidden h-[10vh] items-end pr-10 lg:flex">
       <Logo />
     </div>
     <ul>
@@ -43,10 +44,12 @@ const LINKS = [
       </li>
     </ul>
   </div>
+  <!-- col2 -->
   <div class="text-[8px]">2022 DEMAND GEN, INC. ® ALL RIGHTS RESERVED</div>
-  <div class="w-[25vw]">
+  <!-- col3 -->
+  <div class="hidden w-full lg:block lg:w-[25vw]">
     <Form />
   </div>
 </footer>
 
-<div class="py-5"></div>
+<div class="py-3 lg:py-5"></div>
