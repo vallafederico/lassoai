@@ -127,7 +127,16 @@ export default class Gl {
     });
   }
 
-  animateIn() {
-    this.post.animateIn();
+  animateIn(duration = 1, delay = 0.1) {
+    this.intro = { val: 0 };
+    Tween.to(this.intro, {
+      val: 1,
+      duration,
+      delay,
+      ease: "slow",
+      onUpdate: () => {
+        this.post.animateIn = this.intro.val;
+      },
+    });
   }
 }

@@ -1,8 +1,10 @@
 import { printSignature } from "./modules/signature";
+import Tween from "gsap";
 
 import Dom from "./modules/dom";
 import Viewport from "./modules/viewport";
 import Scroll from "./modules/scroll";
+
 // import Pages from "./modules/pages";
 
 import Gl from "./gl/gl.js";

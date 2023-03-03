@@ -22,6 +22,7 @@ export class Text extends Observe {
       each: 0.02,
       from: "start",
       once: false,
+      transformOrigin: "top center",
       ...anim,
     };
 

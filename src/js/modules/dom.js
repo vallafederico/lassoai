@@ -43,7 +43,7 @@ export default class {
     Tween.set(wrapper, { autoAlpha: 0 });
     wrapper.style.visibility = "visible";
     Tween.to(wrapper, {
-      autoAlpha: 0.8,
+      autoAlpha: 1,
       duration: 0.5,
       delay: 0.8,
       ease: "slow.out",
