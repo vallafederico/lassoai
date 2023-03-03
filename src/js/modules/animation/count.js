@@ -28,6 +28,8 @@ export class Count extends Observe {
 
     this.element = element;
     this.animated = this.element;
+
+    this.setOut();
   }
 
   isIn() {

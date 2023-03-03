@@ -20,13 +20,6 @@ export class Post extends EffectComposer {
 
     this.createPasses();
     this.initEvents();
-
-    Tween.to(this.mergePass.material.uniforms.u_start, {
-      value: 1,
-      duration: 0.5,
-      delay: 0.5,
-      ease: "expo.out",
-    });
   }
 
   createPasses() {
@@ -80,5 +73,14 @@ export class Post extends EffectComposer {
         });
       }
     );
+  }
+
+  animateIn(d = 1) {
+    Tween.to(this.mergePass.material.uniforms.u_start, {
+      value: 1,
+      duration: d,
+      delay: 0.5,
+      ease: "expo.out",
+    });
   }
 }

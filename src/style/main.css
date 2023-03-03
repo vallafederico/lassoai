@@ -186,22 +186,11 @@ p b {
 }
 
 /* ------------------------------  Animation */
-/* [data-a="char"] div,
-[data-a="word"] div,
-[data-a="line"] div {
-  overflow: hidden;
-  border: 1px dashed pink;
-  line-height: inherit;
-  display: inline-block;
-} */
-
-/* [data-a="char"] > div > div > div,
-[data-a="word"] > div > div > div,
-[data-a="line"] > div > div > div {
-  display: inline;
-  border: 1px solid white;
-} */
 
 .svg .active {
   fill: var(--color-accent);
+}
+
+[data-page="w"] {
+  visibility: hidden;
 }

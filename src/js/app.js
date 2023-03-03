@@ -11,6 +11,7 @@ import { UI } from "./modules/gui";
 
 class App {
   constructor() {
+    console.time("startup");
     this.body = document.querySelector("body");
     this.viewport = new Viewport();
 
@@ -20,15 +21,25 @@ class App {
     this.init();
   }
 
-  init() {
+  async init() {
     this.scroll = new Scroll();
     // this.pages = new Pages();
     this.dom = new Dom();
 
     this.gl = new Gl();
+    await this.gl.init();
 
     this.initEvents();
     this.render();
+
+    this.animateIn(); // startup
+
+    console.timeEnd("startup");
+  }
+
+  animateIn() {
+    this.dom?.animateIn();
+    this.gl?.animateIn();
   }
 
   initEvents() {

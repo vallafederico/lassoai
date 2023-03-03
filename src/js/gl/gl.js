@@ -31,7 +31,7 @@ export default class Gl {
     this.time = 0;
 
     this.initEvents();
-    this.init();
+    // this.init();
   }
 
   async init() {
@@ -125,5 +125,9 @@ export default class Gl {
         ease: "slow",
       });
     });
+  }
+
+  animateIn() {
+    this.post.animateIn();
   }
 }

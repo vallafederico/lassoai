@@ -12,7 +12,7 @@ export class Observe extends Emitter {
 
     if (addClass !== undefined) this.addClass = addClass;
     this.init();
-    this.start();
+    // this.start();
   }
 
   init() {

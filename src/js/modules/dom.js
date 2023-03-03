@@ -1,6 +1,7 @@
 import { Text } from "./animation/text";
 import { Alpha } from "./animation/alpha";
 import { Count } from "./animation/count";
+import Tween from "gsap";
 // import { Transform } from "./animation/transform";
 
 export default class {
@@ -28,28 +29,46 @@ export default class {
     );
   }
 
-  destroy() {
-    this.texts.forEach((text) => text.animateOut());
+  start() {
+    this.texts.forEach((text) => text.start());
+    this.alphas.forEach((alpha) => alpha.start());
+    this.count.forEach((count) => count.start());
   }
 
-  /* --  Pages */
-  transitionOut(page) {
-    // console.log("DOM•tranOut", page);
+  // **  Animation
 
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 100);
+  animateIn() {
+    const wrapper = document.querySelector('[data-page="w"]');
+    // console.log(wrapper);
+    Tween.set(wrapper, { autoAlpha: 0 });
+    wrapper.style.visibility = "visible";
+    Tween.to(wrapper, {
+      autoAlpha: 0.8,
+      duration: 0.5,
+      delay: 0.8,
+      ease: "slow.out",
+      onComplete: () => this.start(),
     });
   }
 
-  transitionIn(page) {
-    // console.log("DOM•tranIn", page);
+  // /* --  Pages */
+  // transitionOut(page) {
+  //   // console.log("DOM•tranOut", page);
 
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 100);
-    });
-  }
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       resolve();
+  //     }, 100);
+  //   });
+  // }
+
+  // transitionIn(page) {
+  //   // console.log("DOM•tranIn", page);
+
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       resolve();
+  //     }, 100);
+  //   });
+  // }
 }
