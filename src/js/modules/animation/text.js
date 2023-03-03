@@ -117,13 +117,32 @@ function returnSplit(element) {
   }
 }
 
+// function splitChar(el) {
+//   return new SplitText(splitLine(el), {
+//     type: "chars",
+//   }).chars;
+// }
+// function splitWord(el) {
+//   return new SplitText(splitLine(el), {
+//     type: "words",
+//   }).words;
+// }
+// function splitLine(el) {
+//   const line = new SplitText(el, {
+//     type: "lines",
+//   }).lines;
+//   return new SplitText(line, {
+//     type: "lines",
+//   }).lines;
+// }
+
 function splitChar(el) {
-  return new SplitText(splitLine(el), {
+  return new SplitText(splitWord(el), {
     type: "chars",
   }).chars;
 }
 function splitWord(el) {
-  return new SplitText(splitLine(el), {
+  return new SplitText(el, {
     type: "words",
   }).words;
 }
