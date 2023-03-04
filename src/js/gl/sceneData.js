@@ -72,4 +72,8 @@ export default class extends Scene {
     // console.log(this.trans);
     // this.trans.el.style.border = "1px solid red";
   }
+
+  set animateIn(value) {
+    this.particles.material.uniforms.u_animate_in.value = value;
+  }
 }

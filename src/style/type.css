@@ -10,8 +10,8 @@
 
 @font-face {
   font-family: "Roobert";
-  src: url("/fonts/Roobert-Regular.woff2") format("woff2"),
-    url("/fonts/Roobert-Regular.woff") format("woff");
+  src: url("/fonts/LassoRoobertv2-Regular.woff2") format("woff2"),
+    url("/fonts/LassoRoobertv2-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

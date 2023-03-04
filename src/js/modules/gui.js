@@ -70,7 +70,7 @@ export class UI extends GUI {
     // post
     this.params = {
       bloomStrength: 1.027,
-      bloomRadius: 0.181,
+      bloomRadius: 0.05,
       bloomTresh: 0.08,
     };
 

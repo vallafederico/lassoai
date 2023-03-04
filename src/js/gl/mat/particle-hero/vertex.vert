@@ -22,6 +22,8 @@ varying vec3 v_pos;
 uniform float u_perc;
 uniform float u_speed;
 uniform float u_height;
+uniform float u_animate_in;
+
 
 #include ../noise.glsl
 
@@ -29,6 +31,7 @@ const float NOISE_CTRL = 0.8;
 
 void main() {
   vec3 pos = position;
+  float in_mult = (10. - u_animate_in * 9.);
 
   float ns = cnoise(vec4(
     pos.x * 4., 
@@ -44,7 +47,17 @@ void main() {
 
 
   pos.xyz += vec3(ns, ns, ns) * (1. - u_perc); // NOISE_CTRL;
+  
+  // intro mix
+  pos.xyz = mix(
+    pos.xyz * ns * 3., 
+    pos.xyz, 
+    u_animate_in
+  );
+
+
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
+  
 
   gl_Position = projectionMatrix * m_pos;
   gl_PointSize = (((10.) * a_random) + .02) * (1. / -m_pos.z);

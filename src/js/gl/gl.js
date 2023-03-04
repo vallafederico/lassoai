@@ -129,15 +129,20 @@ export default class Gl {
     });
   }
 
-  animateIn(duration = 1, delay = 0.1) {
+  animateIn(duration = 2.2, delay = 0.2) {
     this.intro = { val: 0 };
+    this.post.animateIn({ duration: 0.3 });
+
     Tween.to(this.intro, {
       val: 1,
       duration,
       delay,
-      ease: "slow",
+      ease: "circ",
       onUpdate: () => {
-        this.post.animateIn = this.intro.val;
+        // this.post.animateIn = this.intro.val;
+        this.scene.animateIn = this.intro.val;
+        this.scene1.animateIn = this.intro.val;
+        this.scene2.animateIn = this.intro.val;
       },
     });
   }

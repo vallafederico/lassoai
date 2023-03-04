@@ -33,7 +33,7 @@ export default class extends Scene {
 
   render(t) {
     if (!this.isActive) return;
-    const sceneTime = t * 2;
+    const sceneTime = t * 3;
 
     this.trans?.render();
     // console.log(this.trans.perc);
@@ -71,5 +71,9 @@ export default class extends Scene {
     this.trans = new Transform({
       element: document.querySelector('[data-dom="hero"]'),
     });
+  }
+
+  set animateIn(value) {
+    this.heroParticles.material.uniforms.u_animate_in.value = value;
   }
 }

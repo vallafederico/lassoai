@@ -70,4 +70,8 @@ export default class extends Scene {
 
     // this.trans.el.style.border = "1px solid red";
   }
+
+  set animateIn(value) {
+    this.spiral.material.uniforms.u_animate_in.value = value;
+  }
 }

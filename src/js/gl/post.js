@@ -75,7 +75,10 @@ export class Post extends EffectComposer {
     );
   }
 
-  set animateIn(val) {
-    this.mergePass.material.uniforms.u_start.value = val;
+  animateIn({ duration }) {
+    Tween.to(this.mergePass.material.uniforms.u_start, {
+      value: 1,
+      duration,
+    });
   }
 }

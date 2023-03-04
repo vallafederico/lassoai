@@ -25,9 +25,11 @@ varying vec3 v_pos;
 uniform float u_prog;
 varying float v_map_prog;
 
+uniform float u_animate_in;
+
 
 void main() {
-  float progress = smoothstep(.0, 1., u_prog * 1.02);
+  float progress = smoothstep(-.2, 1., u_prog * 1.02);
 
   vec3 pos = position;
   pos = rotate(pos, vec3(0., 0., 1.), (u_prog * 2.) + u_time * 3.);
@@ -49,6 +51,8 @@ void main() {
   // pos.y += prog_remap * .05;
 
   vec4 m_pos = modelViewMatrix * vec4(pos, 1.0);
+
+  m_pos = mix(modelViewMatrix * vec4(pos2, 1.0), m_pos,  u_animate_in);
 
 
   gl_Position = projectionMatrix * m_pos;

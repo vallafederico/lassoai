@@ -25,6 +25,7 @@ export default class extends RawShaderMaterial {
       // * animation
       u_prog: { value: 0 },
       u_height: { value: 0.0 },
+      u_animate_in: { value: 0.0 },
     };
 
     this.side = DoubleSide;

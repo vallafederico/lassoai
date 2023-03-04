@@ -18,7 +18,7 @@ const LINKS = [
 ];
 ---
 
-<footer class="c footer my-8 items-end justify-between py-4 lg:flex">
+<footer class="c footer my-8 items-end justify-between text-[12px] lg:flex">
   <!-- col1 -->
   <div class="flex lg:w-[25vw] lg:items-end">
     <div class="hidden h-[10vh] items-end pr-10 lg:flex">
@@ -29,7 +29,11 @@ const LINKS = [
         LINKS.map((link) => {
           return (
             <li>
-              <a target="_blank" class="hover:text-lgr" href={link.href}>
+              <a
+                target="_blank"
+                class="hover:text-lgr duration-300 ease-out"
+                href={link.href}
+              >
                 <div class="py-[.2em]">{link.name}</div>
               </a>
             </li>
@@ -39,7 +43,7 @@ const LINKS = [
 
       <li>
         <a target="_blank" class="hover:text-lgr" href="">
-          <div class="pt-[.8em] underline">Site by off brand.</div>
+          <div class="pt-[1.8em] underline">Site by off brand.</div>
         </a>
       </li>
     </ul>

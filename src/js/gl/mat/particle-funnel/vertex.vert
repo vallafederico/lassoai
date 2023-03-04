@@ -18,6 +18,8 @@ varying float v_random;
 varying float v_random_color;
 varying vec3 v_pos;
 
+uniform float u_animate_in;
+
 #include ../noise.glsl
 
 const float NOISE_CTRL = 0.;
@@ -44,9 +46,9 @@ void main() {
   pos.z *= .1 + (pos.y + .5) * (pos.y * .8);
 
   // pos.xz *= SHAPE_CTRL;
+  pos.xyz = mix( pos.xyz * ns, pos.xyz, u_animate_in);
 
   // bulge
-
 
 
   pos.xyz += vec3(ns, ns, ns) * ((1. - u_prog) * .5) ;

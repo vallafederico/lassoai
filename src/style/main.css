@@ -8,7 +8,7 @@
   /* Spaces */
   --space-s: 0.5rem;
   --space-m: 2rem;
-  --space-l: 8rem;
+  --space-l: 6rem;
   /* Easings */
   --ease-cubic-in: cubic-bezier(0.32, 0, 0.67, 0);
   --ease-cubic-out: cubic-bezier(0.33, 1, 0.68, 1);
@@ -160,7 +160,7 @@ h2 {
 
 h1 {
   font-size: 1.5rem;
-  /* line-height: 1.2em; */
+  /* line-height: 2em; */
 }
 
 h3 {
@@ -178,6 +178,7 @@ h1 b {
 }
 
 p {
+  font-size: 0.9rem;
   color: var(--color-lg);
 }
 
@@ -194,3 +195,11 @@ p b {
 [data-page="w"] {
   visibility: hidden;
 }
+
+h2 em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+/* h2:after {
+  content: ".";
+} */

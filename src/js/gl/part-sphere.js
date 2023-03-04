@@ -49,8 +49,8 @@ export class SphereParticles extends Points {
     let scaledPerc = perc * 1.8;
     this.scale.set(scaledPerc, scaledPerc, scaledPerc);
 
-    // this.position.x = window.app.gl.mouse.ex * 0.03;
-    // this.position.y = window.app.gl.mouse.ey * -0.03 + this.anim.y;
+    this.position.x = window.app.gl.mouse.ex * 0.03;
+    this.position.y = window.app.gl.mouse.ey * -0.03 + this.anim.y;
     // this.position.z = window.app.gl.mouse.ey * -0.1;
   }
 
