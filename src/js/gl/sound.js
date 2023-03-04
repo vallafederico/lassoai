@@ -72,12 +72,12 @@ export class Sound {
         this.isPlaying = false;
         Howler.volume(0.0);
 
-        this.playPauseMain(true);
+        this.playPauseMain(false);
       } else {
         this.isPlaying = true;
         Howler.volume(0.5);
 
-        this.playPauseMain(false);
+        this.playPauseMain(true);
       }
     }
   }
