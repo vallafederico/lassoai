@@ -4,6 +4,21 @@ export class UI extends GUI {
   constructor() {
     super({ closeFolders: true });
 
+    this.windowGui();
+    this.stateMachine();
+  }
+
+  stateMachine() {
+    this.state = {
+      scenes: new Map(),
+    };
+
+    this.state.scenes.set("hero", 0);
+    this.state.scenes.set("data", 0);
+    this.state.scenes.set("foot", 0);
+  }
+
+  windowGui() {
     // main
     let domVisibleToggle = true;
     this.ctrls = {

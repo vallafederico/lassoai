@@ -32,6 +32,8 @@ export class Transform {
       )
     );
 
+    window.UI.state.scenes.set("foot", this.perc);
+
     // console.log(this.perc);
   }
 }

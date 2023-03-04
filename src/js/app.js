@@ -6,6 +6,7 @@ import Viewport from "./modules/viewport";
 import Scroll from "./modules/scroll";
 
 // import Pages from "./modules/pages";
+import { Sound } from "./gl/sound.js";
 
 import Gl from "./gl/gl.js";
 
@@ -36,6 +37,8 @@ class App {
 
     this.animateIn(); // startup
 
+    this.sound = new Sound();
+
     console.timeEnd("startup");
   }
 
@@ -60,6 +63,7 @@ class App {
     this.dom?.render();
 
     window.requestAnimationFrame(this.render.bind(this));
+    this.sound?.render();
   }
 
   /* Events */

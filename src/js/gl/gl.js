@@ -83,6 +83,8 @@ export default class Gl {
       data: this.scene1.toTarget(this.renderer, this.camera),
       foot: this.scene2.toTarget(this.renderer, this.camera),
     };
+
+    // console.log(window.UI.state.scenes);
   }
 
   resize() {
