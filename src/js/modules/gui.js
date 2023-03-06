@@ -6,6 +6,8 @@ export class UI extends GUI {
 
     this.windowGui();
     this.stateMachine();
+
+    this.close();
   }
 
   stateMachine() {

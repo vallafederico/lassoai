@@ -46,6 +46,7 @@ export class Sound {
     this.hasContext = false;
 
     this.toggle.onclick = () => this.init();
+    this.toggle.style.opacity = 0.2;
   }
 
   init() {
@@ -89,13 +90,8 @@ export class Sound {
     this.sounds.scene1.volume(rmp(window.UI.state.scenes.get("hero")));
     this.sounds.scene2.volume(rmp(window.UI.state.scenes.get("data")));
     this.sounds.scene3.volume(window.UI.state.scenes.get("foot"));
-    this.sounds.sphere.volume(
-      clamp(
-        0,
-        1,
-        window.UI.state.scenes.get("data") - window.UI.state.scenes.get("foot")
-      )
-    );
+
+    this.sounds.sphere.volume(clamp(0.5, 1, Math.abs(window.sscroll.speed)));
     // console.log(window.UI.state.scenes); // hero data foot
   }
 
@@ -105,11 +101,13 @@ export class Sound {
       this.sounds.scene2.play();
       this.sounds.scene3.play();
       this.sounds.sphere.play();
+      this.toggle.style.opacity = 1;
     } else {
       this.sounds.scene1.pause();
       this.sounds.scene2.pause();
       this.sounds.scene3.pause();
       this.sounds.sphere.pause();
+      this.toggle.style.opacity = 0.2;
     }
   }
 
