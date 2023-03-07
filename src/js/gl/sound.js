@@ -45,12 +45,15 @@ export class Sound {
     this.isPlaying = false;
     this.hasContext = false;
 
+    this.baseVolume = 0.2;
+
     this.toggle.onclick = () => this.init();
     this.toggle.style.opacity = 0.2;
   }
 
   init() {
     if (!this.hasContext) {
+      Howler.volume(this.baseVolume);
       // create first time
       this.hasContext = true;
       this.isPlaying = true;
@@ -76,7 +79,7 @@ export class Sound {
         this.playPauseMain(false);
       } else {
         this.isPlaying = true;
-        Howler.volume(0.5);
+        Howler.volume(this.baseVolume);
 
         this.playPauseMain(true);
       }
