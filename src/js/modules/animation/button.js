@@ -1,7 +1,9 @@
 import gsap from "gsap";
 import { Observe } from "../../util/observe";
 
-export class Count extends Observe {
+// NEEDS CHECKING!
+
+export class Button extends Observe {
   constructor({ element, anim }) {
     super({
       element,
@@ -13,22 +15,33 @@ export class Count extends Observe {
     });
 
     this.anim = {
-      d: 1.2,
-      ease: "linear",
-      delay: 0.1,
+      d: 0.1,
+      ease: "expo.out",
+      delay: 0,
       // each: 0.05,
-      from: "start",
+      // from: "start",
       once: false,
+      transformOrigin: "bottom center",
       ...anim,
     };
 
-    this.ctrl = {
-      val: 0,
+    this.params = {
+      in: {
+        // autoAlpha: 1,
+        y: "0%",
+        // x: "0%",
+        // scaleY: 1,
+      },
+      out: {
+        // autoAlpha: 0,
+        y: "40%",
+        // x: "5%",
+        // scaleY: 0.85,
+      },
     };
 
     this.element = element;
     this.animated = this.element;
-    this.parent = this.element.parentNode;
 
     this.setOut();
   }
@@ -44,43 +57,35 @@ export class Count extends Observe {
 
   animateIn() {
     if (this.animation) this.animation.kill();
-    // console.log("animatein");
-    this.animation = gsap.to(this.ctrl, {
-      val: 88,
+    this.animated.classList.add("inview");
+
+    this.animation = gsap.to(this.animated, {
+      ...this.params.in,
       duration: this.anim.d,
       ease: this.anim.ease,
       delay: this.anim.delay,
-      onUpdate: () => {
-        this.animated.innerHTML = Math.floor(this.ctrl.val);
-      },
-    });
-
-    gsap.to(this.parent, {
-      autoAlpha: 1,
     });
   }
 
   animateOut() {
     this.stop();
     if (this.animation) this.animation.kill();
+    this.animation = gsap.to(this.animated, {
+      ...this.params.out,
+    });
   }
 
   setIn() {
     if (this.animation) this.animation.kill();
-    // gsap.set(this.animated, { autoAlpha: 1 });
+    gsap.set(this.animated, { autoAlpha: 1 });
   }
 
   setOut() {
     if (this.animation) this.animation.kill();
-    gsap.set(this.ctrl, {
-      val: 0,
-      onUpdate: () => {
-        this.animated.innerHTML = Math.floor(this.ctrl.val);
-      },
-    });
+    this.animated.classList.remove("inview");
 
-    gsap.set(this.parent, {
-      autoAlpha: 0,
+    gsap.set(this.animated, {
+      ...this.params.out,
     });
   }
 }

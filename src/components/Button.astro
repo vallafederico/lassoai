@@ -2,16 +2,9 @@
 import Logo from "./Logo.astro";
 ---
 
-<!-- <button
-  class="flex items-center rounded-md rounded-br-xl bg-yellow px-6 py-3 text-black"
->
-  <slot />
-  <div class="flex h-[2em] items-center pl-3">
-    <Logo color="#000" />
-  </div>
-</button> -->
 <button
   data-sound="ui"
+  data-a="button"
   class="flex items-center px-6 py-3 text-[14px] text-black"
 >
   <div class="relative overflow-hidden">
@@ -27,13 +20,17 @@ import Logo from "./Logo.astro";
 
 <style>
   button {
-    transition: all 0.4s ease-out;
-    border-radius: 0.5rem 0.5rem 2rem 0.5rem;
+    transition: all 1s ease;
+    border-radius: 10rem;
     background-color: #edff00;
   }
 
+  .inview {
+    border-radius: 0.5rem 0.5rem 2rem 0.5rem;
+  }
+
   button:hover {
-    transition: all 0.4s ease-out;
+    transition: all 0.4s ease;
     border-radius: 1rem 2rem 0.5rem 1rem;
 
     background-color: #fff;
@@ -42,13 +39,19 @@ import Logo from "./Logo.astro";
 
   button .animatable {
     position: relative;
-    transform: translateY(0%);
-    transition: all 0.4s var(--ease-cubic-out);
+    transform: translateY(200%);
+    transition: all 1.4s var(--ease-cubic-out);
   }
 
   button:hover .animatable {
     position: relative;
     transform: translateY(-100%);
     transition: all 0.5s var(--ease-cubic-out);
+  }
+
+  .inview .animatable {
+    position: relative;
+    transform: translateY(0%);
+    transition: all 1s var(--ease-cubic-out);
   }
 </style>

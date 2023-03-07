@@ -2,6 +2,7 @@ import { Text } from "./animation/text";
 import { Title } from "./animation/title";
 import { Alpha } from "./animation/alpha";
 import { Count } from "./animation/count";
+import { Button } from "./animation/button";
 import Tween from "gsap";
 // import { Transform } from "./animation/transform";
 
@@ -25,6 +26,10 @@ export default class {
       (el) => new Title({ element: el })
     );
 
+    this.buttons = [...document.querySelectorAll('[data-a="button"]')].map(
+      (el) => new Button({ element: el })
+    );
+
     this.alphas = [...document.querySelectorAll('[data-a="alpha"]')].map(
       (el) => new Alpha({ element: el })
     );
@@ -37,6 +42,7 @@ export default class {
   start() {
     this.texts.forEach((text) => text.start());
     this.titles.forEach((title) => title.start());
+    this.buttons.forEach((button) => button.start());
     this.alphas.forEach((alpha) => alpha.start());
     this.count.forEach((count) => count.start());
   }
