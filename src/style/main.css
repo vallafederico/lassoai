@@ -209,3 +209,11 @@ h2 em {
 /* h2:after {
   content: ".";
 } */
+
+/** Aimation */
+[data-a="title"] div {
+  overflow: hidden;
+  height: 1.2em;
+  will-change: transform;
+  /* border: 1px solid pink; */
+}

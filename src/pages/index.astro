@@ -8,6 +8,8 @@ import Footer from "src/components/Footer.astro";
 import Square from "src/components/Square.astro";
 import Button from "src/components/Button.astro";
 import Sound from "src/components/Sound.astro";
+
+import Title from "src/components/Title.astro";
 ---
 
 <Layout title="Home">
@@ -20,12 +22,11 @@ import Sound from "src/components/Sound.astro";
       className="Hero min-h-screen flex items-center justify-center text-center"
     >
       <div class="c flex flex-col items-center">
-        <h2 class="leading-[1.2em] lg:text-[6vw]">
-          <span data-a="char"> <b>Grow</b></span>
-          <span data-a="char">
-            Your <br /> Sales Pipeline <br />with Lasso<em>.</em></span
-          >
-        </h2>
+        <Title>
+          <b>Grow</b>
+          <span> Your <br /> Sales Pipeline <br />with Lasso<em>.</em></span>
+        </Title>
+
         <h1 data-a="word"><b>The AI-Powered</b> Contact Discovery Solution.</h1>
         <p data-a="alpha" class="max-w-[35ch]">
           We've developed a cutting-edge <b>AI platform</b> that can quickly and
@@ -74,9 +75,9 @@ import Sound from "src/components/Sound.astro";
   <div class="wrap" data-dom="data">
     <Section className="min-h-screen flex  items-center">
       <div class="c md:max-w-[40vw]">
-        <h2 data-a="char" class="text-[15vw] lg:text-[6vw]">
+        <Title>
           Find your <b> missing</b> contacts<em>.</em>
-        </h2>
+        </Title>
       </div>
     </Section>
     <Section className="lg:h-[200vh] relative">
@@ -121,9 +122,13 @@ import Sound from "src/components/Sound.astro";
       <div
         class="c flex h-screen flex-col items-center justify-center text-center"
       >
-        <h2 data-a="char" class="text-[10vw] lg:max-w-[50vw] lg:text-[6vw]">
-          Continuously find <b> net new</b><em>.</em>
-        </h2>
+        <!-- <h2 data-a="char" class="text-[10vw] lg:max-w-[50vw] lg:text-[6vw]"> -->
+        <div class="lg:max-w-[50vw]">
+          <Title>
+            Continuously find <b> net new</b><em>.</em>
+          </Title>
+        </div>
+        <!-- </h2> -->
         <h3 data-a="alpha" class="mt.8 max-w-[40ch] leading-[1.3em]">
           <b>Automate</b> prospecting so that you can free up mental bandwidth and
           focus on what matters most, <b> closing deals</b> and maintaining <b

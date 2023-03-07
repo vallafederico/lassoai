@@ -1,4 +1,5 @@
 import { Text } from "./animation/text";
+import { Title } from "./animation/title";
 import { Alpha } from "./animation/alpha";
 import { Count } from "./animation/count";
 import Tween from "gsap";
@@ -20,6 +21,10 @@ export default class {
       ),
     ].map((el) => new Text({ element: el }));
 
+    this.titles = [...document.querySelectorAll('[data-a="title"]')].map(
+      (el) => new Title({ element: el })
+    );
+
     this.alphas = [...document.querySelectorAll('[data-a="alpha"]')].map(
       (el) => new Alpha({ element: el })
     );
@@ -31,6 +36,7 @@ export default class {
 
   start() {
     this.texts.forEach((text) => text.start());
+    this.titles.forEach((title) => title.start());
     this.alphas.forEach((alpha) => alpha.start());
     this.count.forEach((count) => count.start());
   }
