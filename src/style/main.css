@@ -217,17 +217,3 @@ h2 em {
   will-change: transform;
   /* border: 1px solid pink; */
 }
-
-svg {
-  opacity: 0;
-}
-
-.inview svg {
-  opacity: 1;
-  transition: opacity 0.8s;
-}
-
-/*
-.inview:hover svg {
-  transform: scale(0.8);
-} */
