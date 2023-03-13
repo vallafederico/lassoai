@@ -33,7 +33,7 @@ export default class extends Scene {
 
   render(t) {
     if (!this.isActive) return;
-    const sceneTime = t * 3;
+    const sceneTime = t * 2;
 
     this.trans?.render();
     // console.log(this.trans.perc);

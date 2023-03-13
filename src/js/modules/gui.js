@@ -1,4 +1,7 @@
 import GUI from "lil-gui";
+import { params } from "../gl/params.js";
+
+const [r, g, b] = params.gl.part_col2;
 
 export class UI extends GUI {
   constructor() {
@@ -42,10 +45,10 @@ export class UI extends GUI {
     // particles
     this.particles = {
       particleLow: 0.1,
-      particleHigh: 0.759,
-      r: 0.9294117647058824,
-      g: 1,
-      b: 0,
+      particleHigh: 0.659,
+      r,
+      g,
+      b,
     };
 
     this.particlesFolder = this.addFolder("Particles");

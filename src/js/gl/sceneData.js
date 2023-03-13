@@ -21,10 +21,10 @@ export default class extends Scene {
 
     this.particles = new FunnelParticles();
     // this.particles.position.z = 1.5;
-    this.sphere = new SphereParticles();
+    // this.sphere = new SphereParticles();
 
     this.ctrl.add(this.particles);
-    this.ctrl.add(this.sphere);
+    // this.ctrl.add(this.sphere);
     this.add(this.ctrl);
 
     // this.ctrl.scale.set(0.2, 0.2, 0.2);
@@ -40,7 +40,7 @@ export default class extends Scene {
     // this.ctrl.rotation.x = window.app.gl.mouse.ey * 0.05;
 
     if (this.particles) this.particles.render(t, this.trans.perc);
-    if (this.sphere) this.sphere.render(t, this.trans.perc);
+    // if (this.sphere) this.sphere.render(t, this.trans.perc);
   }
 
   toTarget(renderer, camera) {
